@@ -1,0 +1,197 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+#quick-bar {
+    background-color: #1d212d;
+    color: white;
+}
+
+#quick-bar p, ul, ul li {
+    margin-bottom: 0;
+}
+
+#quick-bar p {
+    padding: 1em 1em 0;
+}
+
+#quick-bar p span.flaticon-phone {
+    float: left;
+    margin: -0.3em 0.3em 0 0;
+}
+
+#quick-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+#quick-bar ul li {
+    display: inline-block;
+    margin: 0 -0.13em;
+    padding: 0.8em 1em;
+}
+
+#quick-bar ul li:nth-child(2) {
+    background-color: #343842;
+}
+
+#quick-bar ul li:last-child {
+    background-color: #f9bb05;
+    font-weight: bold;
+}
+
+#quick-bar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#navigation {
+    padding: 2em 0;
+}
+
+#navigation h1 {
+    color: #1d212d;
+    font-family: 'Droid Serif', serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0;
+}
+
+#navigation h2 {
+    color: #b0b0b0;
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    margin-top: -0.5em;
+}
+
+#navigation ul {
+    list-style-type: none;
+    margin: 0.9em 0 0;
+    padding: 0;
+    text-align: right;
+}
+
+#navigation ul li {
+    display: inline-block;
+    margin: 0 -0.1em;
+    padding: 0.8em 1em;
+}
+
+#navigation ul li a {
+    color: #222;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+#navigation ul li a.active {
+    font-weight: bold;
+}
+
+#carousel div.image.item {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 600px;
+}
+
+#carousel div.item div.box {
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    max-width: 30%;
+    padding: 1em;
+    position: absolute;
+}
+
+#carousel div.box.top {
+    top: 2em;
+}
+
+#carousel div.box.bottom {
+    bottom: 2em;
+}
+
+#carousel div.box.right {
+    right: 2em;
+}
+
+#carousel div.box.left {
+    left: 2em;
+}
+
+#carousel div.item div.box h3 {
+    font-size: 3rem;
+}
+
+#carousel div.item div.box p {
+    margin-bottom: 0;
+}
+
+#carousel div.item div.box a {
+    color: #222;
+    font-weight: bold;
+}
+
+#news {
+    padding: 3em 0;
+}
+
+#news h4 {
+    font-size: 2.8rem;
+}
+
+#news div.news-item:not(:first-of-type) {
+    margin-top: 3em;
+}
+
+#about-us {
+    background-color: #91ba33;
+    color: white;
+    padding: 3em 0;
+    text-align: center;
+}
+
+#about-us p {
+    font-size: 1.8em;
+}
+
+#about-us a.button {
+    background-color: white;
+    color: #222;
+}
+
+footer {
+    background-color: #1d212d;
+    color: white;
+    font-size: 0.9em;
+}
+
+footer h3 {
+    font-size: 2.3rem;
+    letter-spacing: 0;
+}
+
+footer ul {
+    margin-bottom: 2.5rem;
+    list-style-type: none;
+}
+
+footer ul li a {
+    color: #91ba33;
+    text-decoration: none;
+}
+
+footer div#footer-content {
+    padding: 4em 0;
+}
+
+footer div#copyright {
+    background-color: #181b25;
+    text-align: center;
+}
+
+footer div#copyright p {
+    margin: 0;
+    padding: 1.8em 0;
+}
