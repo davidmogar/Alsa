@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.web.admin.auth;
+package com.davidmogar.alsa.web.admin.users;
 
 import com.davidmogar.alsa.services.auth.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class UsersController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createUser(Model model) {
-        return "admin.auth.create";
+        return "admin.users.create";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -33,7 +33,7 @@ public class UsersController {
     }
 
     private ModelAndView listUsers(int pageIndex) {
-        ModelAndView modelAndView = new ModelAndView("admin.auth.list");
+        ModelAndView modelAndView = new ModelAndView("admin.users.list");
 
         Page page = userService.findAll(pageIndex);
         modelAndView.addObject("page", page);
