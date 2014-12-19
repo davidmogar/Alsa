@@ -14,6 +14,7 @@
                 <h3>Quick links</h3>
 
                 <ul>
+                    <li><a href="${pageContext.request.contextPath}/admin">Admin area</a></li>
                     <li><a href="#">Aviso legal</a></li>
                     <li><a href="#">Condiciones de compra</a></li>
                     <li><a href="#">Contacto</a></li>

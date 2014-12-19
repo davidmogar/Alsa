@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
 
-<tilesx:useAttribute name="active" />
+<tilesx:useAttribute name="active"/>
 
 <header>
     <div id="quick-bar" class="row">
@@ -21,6 +21,6 @@
         </div>
     </div>
 
-    <tiles:insertAttribute name="navigation" />
+    <tiles:insertAttribute name="navigation"/>
 
 </header>

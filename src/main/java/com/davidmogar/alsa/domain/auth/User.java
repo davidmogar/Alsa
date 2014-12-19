@@ -1,7 +1,5 @@
 package com.davidmogar.alsa.domain.auth;
 
-import com.davidmogar.alsa.domain.users.Person;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -9,18 +7,28 @@ import java.util.Set;
 public class User {
 
     @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String firstname;
+
+    @Column(nullable = false)
+    private String lastname;
+
     private boolean enabled;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Authority> authorities;
-
-    @OneToOne(mappedBy = "user")
-    private Person person;
 
     public User() {
         enabled = true;

@@ -1,5 +1,5 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
     font-weight: 300;
 }
 
@@ -48,11 +48,11 @@ body {
     text-decoration: none;
 }
 
-#navigation {
+nav {
     padding: 2em 0;
 }
 
-#navigation h1 {
+nav h1 {
     color: #1d212d;
     font-family: 'Droid Serif', serif;
     font-weight: 700;
@@ -60,33 +60,33 @@ body {
     margin-bottom: 0;
 }
 
-#navigation h2 {
+nav h2 {
     color: #b0b0b0;
     font-size: 1.4rem;
     letter-spacing: 0.03em;
     margin-top: -0.5em;
 }
 
-#navigation ul {
+nav ul {
     list-style-type: none;
     margin: 0.9em 0 0;
     padding: 0;
     text-align: right;
 }
 
-#navigation ul li {
+nav ul li {
     display: inline-block;
     margin: 0 -0.1em;
     padding: 0.8em 1em;
 }
 
-#navigation ul li a {
+nav ul li a {
     color: #222;
     font-size: 1.1em;
     text-decoration: none;
 }
 
-#navigation ul li a.active {
+nav ul li a.active {
     font-weight: bold;
 }
 

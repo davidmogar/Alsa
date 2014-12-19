@@ -15,26 +15,32 @@
 
   <!-- Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="<c:url value='/resources/css/normalize.css'/>" type="text/css"/>
   <link rel="stylesheet" href="<c:url value='/resources/css/skeleton.css'/>" type="text/css"/>
   <link rel="stylesheet" href="<c:url value='/resources/css/flaticon.css'/>" type="text/css"/>
-  <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>" type="text/css"/>
-
-  <!-- Owl stylesheet -->
-  <link rel="stylesheet" href="<c:url value='/resources/owl-carousel/owl.carousel.css'/>">
-  <link rel="stylesheet" href="<c:url value='/resources/owl-carousel/owl.theme.css'/>">
+  <link rel="stylesheet" href="<c:url value='/resources/css/admin.css'/>" type="text/css"/>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="<c:url value='/resources/img/favicon.png'/>" />
 
   <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
-  <script src="<c:url value='/resources/owl-carousel/owl.carousel.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/admin.js'/>"></script>
 </head>
 <body>
   <tiles:insertAttribute name="header" />
-  <tiles:insertAttribute name="content" />
+
+  <div id="wrapper" class="row">
+    <div id="left-panel" class="three columns">
+      <tiles:insertAttribute name="navigation"/>
+    </div>
+
+    <div id="right-panel" class="nine columns">
+      <tiles:insertAttribute name="content"/>
+    </div>
+  </div>
+
   <tiles:insertAttribute name="footer" />
 </body>
 </html>
