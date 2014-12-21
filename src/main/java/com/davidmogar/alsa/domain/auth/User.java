@@ -1,7 +1,6 @@
 package com.davidmogar.alsa.domain.auth;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class User {
@@ -11,27 +10,60 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
     private String firstname;
 
     @Column(nullable = false)
     private String lastname;
 
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
+
     private boolean enabled;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Authority> authorities;
+    @ManyToOne
+    @JoinColumn
+    private Authority authority;
 
-    public User() {
-        enabled = true;
+    public static Builder getBuilder(String username, String password, boolean enabled) {
+        return new Builder(username, password, enabled);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -58,12 +90,51 @@ public class User {
         this.enabled = enabled;
     }
 
-    public Set<Authority> getAuthorities() {
-        return authorities;
+    public Authority getAuthority() {
+        return authority;
     }
 
-    public void setAuthorities(Set<Authority> authorities) {
-        this.authorities = authorities;
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
     }
 
+    public static class Builder {
+        User built;
+
+        Builder(String username, String password, boolean enabled) {
+            built = new User();
+            built.username = username;
+            built.password = password;
+            built.enabled = enabled;
+        }
+
+        public Builder firstname(String firstname) {
+            built.firstname = firstname;
+
+            return this;
+        }
+
+        public Builder lastname(String lastname) {
+            built.lastname = lastname;
+
+            return this;
+        }
+
+        public Builder email(String email) {
+            built.email = email;
+
+            return this;
+        }
+
+        public Builder authority(Authority authority) {
+            built.authority = authority;
+
+            return this;
+        }
+
+        public User build() {
+            return built;
+        }
+
+    }
 }

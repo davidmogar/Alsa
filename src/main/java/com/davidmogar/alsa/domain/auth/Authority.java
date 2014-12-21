@@ -1,8 +1,7 @@
 package com.davidmogar.alsa.domain.auth;
 
-import com.davidmogar.alsa.domain.auth.User;
-
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Authority {
@@ -11,12 +10,21 @@ public class Authority {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
-    private String authority;
+    @Column(length = 20, unique = true)
+    private String name;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn
-    private User user;
+    private String description;
+
+    @OneToMany(mappedBy = "authority", cascade = CascadeType.REMOVE)
+    private Set<User> users;
+
+    public Authority() {
+    }
+
+    public Authority(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -26,20 +34,28 @@ public class Authority {
         this.id = id;
     }
 
-    public String getAuthority() {
-        return authority;
+    public String getName() {
+        return name;
     }
 
-    public void setAuthority(String authority) {
-        this.authority = authority;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public User getUser() {
-        return user;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
 }
