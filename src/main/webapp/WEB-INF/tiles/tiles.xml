@@ -49,6 +49,14 @@
         <put-attribute name="content" value="/WEB-INF/pages/admin/auth/users/list.jsp"/>
     </definition>
 
+    <definition name="admin.places.create" extends="adminLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/places/create.jsp"/>
+    </definition>
+
+    <definition name="admin.places.list" extends="adminLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/places/list.jsp"/>
+    </definition>
+
     <!-- Site pages -->
 
     <definition name="site.home" extends="siteLayout">

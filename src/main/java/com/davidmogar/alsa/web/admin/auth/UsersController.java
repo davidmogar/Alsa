@@ -1,5 +1,6 @@
 package com.davidmogar.alsa.web.admin.auth;
 
+import com.davidmogar.alsa.dto.auth.AuthorityDto;
 import com.davidmogar.alsa.dto.auth.UserDto;
 import com.davidmogar.alsa.dto.news.NewsDto;
 import com.davidmogar.alsa.services.auth.AuthorityService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/users")
@@ -30,9 +32,7 @@ public class UsersController {
     private UserService userService;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createUser(Model model) {
-        model.addAttribute("authorities", authorityService.findAll());
-
+    public String createUser() {
         return "admin.users.create";
     }
 
@@ -73,6 +73,11 @@ public class UsersController {
         modelAndView.addObject("page", page);
 
         return modelAndView;
+    }
+
+    @ModelAttribute("authorities")
+    private List<AuthorityDto> authorities() {
+        return authorityService.findAll();
     }
 
     @ModelAttribute("user")

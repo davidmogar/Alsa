@@ -105,6 +105,12 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
+        <!-- Commons file upload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+
         <!-- Apache Tiles -->
         <dependency>
             <groupId>org.apache.tiles</groupId>

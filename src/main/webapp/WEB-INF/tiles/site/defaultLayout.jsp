@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="<c:url value='/resources/owl-carousel/owl.theme.css'/>">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<c:url value='/resources/img/favicon.png'/>"/>
+    <link rel="icon" type="image/png" href="<c:url value='/resources/img/favicon.ico'/>"/>
 
     <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
     <script src="<c:url value='/resources/owl-carousel/owl.carousel.min.js'/>"></script>
