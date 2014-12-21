@@ -4,32 +4,30 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="util" %>
 
 <div id="page-header">
-    <h3>List users</h3>
+    <h3>List authorities</h3>
 </div>
 
 <div id="page-content">
     <div class="panel">
         <div class="panel-heading">
-            List of users in the system
+            List of authorities in the system
         </div>
 
         <div class="panel-content">
             <table class="u-full-width">
                 <thead>
                 <tr>
-                    <th>Username</th>
-                    <th>Passwrod</th>
-                    <th>Authorities</th>
-                    <th>Enabled</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${page.content}" var="user">
+                <c:forEach items="${authorities}" var="authority">
                     <tr>
-                        <td>${user.username}</td>
-                        <td>${user.password}</td>
-                        <td></td>
-                        <td>${user.enabled}</td>
+                        <td>${authority.id}</td>
+                        <td>${authority.name}</td>
+                        <td>${authority.description}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

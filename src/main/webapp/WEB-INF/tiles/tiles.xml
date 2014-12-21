@@ -25,6 +25,14 @@
         <put-attribute name="content" value="/WEB-INF/pages/admin/home.jsp"/>
     </definition>
 
+    <definition name="admin.authorities.create" extends="adminLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/auth/authorities/create.jsp"/>
+    </definition>
+
+    <definition name="admin.authorities.list" extends="adminLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/auth/authorities/list.jsp"/>
+    </definition>
+
     <definition name="admin.news.create" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/news/create.jsp"/>
     </definition>
@@ -34,11 +42,11 @@
     </definition>
 
     <definition name="admin.users.create" extends="adminLayout">
-        <put-attribute name="content" value="/WEB-INF/pages/admin/users/create.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/admin/auth/users/create.jsp"/>
     </definition>
 
     <definition name="admin.users.list" extends="adminLayout">
-        <put-attribute name="content" value="/WEB-INF/pages/admin/users/list.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/admin/auth/users/list.jsp"/>
     </definition>
 
     <!-- Site pages -->
