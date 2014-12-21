@@ -9,6 +9,10 @@ html, body {
     border-color: #0866c6 !important;
 }
 
+.validation-error {
+    color: red;
+}
+
 input[type=text]:focus, textarea:focus {
     border-color: #0866c6 !important;
 }

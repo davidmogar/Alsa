@@ -30,7 +30,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView listNews(Model model) {
+    public ModelAndView listNews() {
         return listNews(1);
     }
 
@@ -40,8 +40,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveNews(@Valid @ModelAttribute("news") NewsDto newsDto, BindingResult bindingResult, Model
-            model) {
+    public String saveNews(@Valid @ModelAttribute NewsDto newsDto, BindingResult bindingResult) {
         String view = "admin.news.create";
 
         if (!bindingResult.hasErrors()) {

@@ -14,10 +14,12 @@
 
         <div class="panel-content">
             <spring:form commandName="news" action="save">
+                <spring:label path="title">Title</spring:label>
                 <spring:input path="title" class="u-full-width" type="text" placeholder="Title of the news"
                               required="true"/>
                 <spring:errors path="title" cssClass="validation-error"/>
 
+                <spring:label path="title">Text</spring:label>
                 <spring:textarea path="text" class="u-full-width" placeholder="News text" required="true"/>
                 <spring:errors path="text" cssClass="validation-error"/>
 

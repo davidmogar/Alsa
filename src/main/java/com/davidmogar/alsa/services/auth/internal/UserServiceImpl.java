@@ -2,6 +2,7 @@ package com.davidmogar.alsa.services.auth.internal;
 
 import com.davidmogar.alsa.domain.auth.User;
 import com.davidmogar.alsa.dto.auth.UserDto;
+import com.davidmogar.alsa.repositories.auth.AuthorityRepository;
 import com.davidmogar.alsa.repositories.auth.UserRepository;
 import com.davidmogar.alsa.services.auth.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
     protected static final int NUMBER_OF_USERS_PER_PAGE = 10;
 
     @Autowired
+    private AuthorityRepository authorityRepository;
+
+    @Autowired
     private UserRepository userRepository;
 
     @Override
@@ -37,6 +41,16 @@ public class UserServiceImpl implements UserService {
         List<UserDto> users = page.getContent().stream().map(UserDto::new).collect(Collectors.toList());
 
         return new PageImpl<>(users, pageable, page.getTotalElements());
+    }
+
+    @Override
+    public void save(UserDto userDto) {
+        userRepository.save(User.getBuilder(userDto.getUsername(), userDto.getPassword(), userDto.isEnabled())
+                .firstname(userDto.getFirstname())
+                .lastname(userDto.getLastname())
+                .email(userDto.getEmail())
+                .authority(authorityRepository.findByName(userDto.getAuthority()))
+                .build());
     }
 
     /**

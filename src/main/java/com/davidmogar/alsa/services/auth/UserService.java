@@ -10,4 +10,6 @@ public interface UserService {
     List<UserDto> findAll();
 
     Page<UserDto> findAll(int page);
+
+    void save(UserDto userDto);
 }

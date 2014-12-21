@@ -1,18 +1,18 @@
 package com.davidmogar.alsa.dto.news;
 
 import com.davidmogar.alsa.domain.news.News;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class NewsDto {
 
-    @NotEmpty
+    @NotNull
     @Size(max = 255)
     private String title;
 
-    @NotEmpty
+    @NotNull
     @Size(min = 200, max = 1000)
     private String text;
 
