@@ -1,8 +1,9 @@
 package com.davidmogar.alsa.services.places.internal;
 
-import com.davidmogar.alsa.domain.auth.User;
+import com.davidmogar.alsa.domain.change.DatabaseChange;
 import com.davidmogar.alsa.domain.places.Place;
 import com.davidmogar.alsa.dto.places.PlaceDto;
+import com.davidmogar.alsa.repositories.change.DatabaseChangeRepository;
 import com.davidmogar.alsa.repositories.places.PlaceRepository;
 import com.davidmogar.alsa.services.places.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,15 @@ public class PlaceServiceImpl implements PlaceService {
     protected static final int NUMBER_OF_PLACES_PER_PAGE = 10;
 
     @Autowired
+    private DatabaseChangeRepository databaseChangeRepository;
+
+    @Autowired
     private PlaceRepository placeRepository;
+
+    @Override
+    public long count() {
+        return placeRepository.count();
+    }
 
     @Override
     public List<PlaceDto> findAll() {
@@ -47,6 +56,8 @@ public class PlaceServiceImpl implements PlaceService {
                 .longitude(placeDto.getLongitude())
                 .imagePath(placeDto.getImagePath())
                 .build());
+
+        databaseChangeRepository.save(new DatabaseChange("Created place with name " + placeDto.getName()));
     }
 
     /**

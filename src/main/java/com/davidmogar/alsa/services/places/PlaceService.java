@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface PlaceService {
 
+    long count();
+
     List<PlaceDto> findAll();
 
     Page<PlaceDto> findAll(int pageIndex);

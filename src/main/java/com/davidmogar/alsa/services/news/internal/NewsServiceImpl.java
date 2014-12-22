@@ -1,9 +1,9 @@
 package com.davidmogar.alsa.services.news.internal;
 
-import com.davidmogar.alsa.domain.auth.User;
+import com.davidmogar.alsa.domain.change.DatabaseChange;
 import com.davidmogar.alsa.domain.news.News;
-import com.davidmogar.alsa.dto.auth.UserDto;
 import com.davidmogar.alsa.dto.news.NewsDto;
+import com.davidmogar.alsa.repositories.change.DatabaseChangeRepository;
 import com.davidmogar.alsa.repositories.news.NewsRepository;
 import com.davidmogar.alsa.services.news.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,9 @@ import java.util.stream.StreamSupport;
 public class NewsServiceImpl implements NewsService {
 
     protected static final int NUMBER_OF_NEWS_PER_PAGE = 10;
+
+    @Autowired
+    private DatabaseChangeRepository databaseChangeRepository;
 
     @Autowired
     private NewsRepository newsRepository;
@@ -43,6 +46,8 @@ public class NewsServiceImpl implements NewsService {
         News news = new News(newsDto.getTitle(), newsDto.getText(), newsDto.getPublicationDate());
 
         newsRepository.save(news);
+
+        databaseChangeRepository.save(new DatabaseChange("Created news with title " + newsDto.getTitle()));
     }
 
     /**

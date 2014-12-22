@@ -1,8 +1,10 @@
 package com.davidmogar.alsa.services.auth.internal;
 
 import com.davidmogar.alsa.domain.auth.Authority;
+import com.davidmogar.alsa.domain.change.DatabaseChange;
 import com.davidmogar.alsa.dto.auth.AuthorityDto;
 import com.davidmogar.alsa.repositories.auth.AuthorityRepository;
+import com.davidmogar.alsa.repositories.change.DatabaseChangeRepository;
 import com.davidmogar.alsa.services.auth.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ public class AuthorityServiceImpl implements AuthorityService {
 
     @Autowired
     private AuthorityRepository authorityRepository;
+
+    @Autowired
+    private DatabaseChangeRepository databaseChangeRepository;
 
     @Override
     public List<AuthorityDto> findAll() {
@@ -40,6 +45,8 @@ public class AuthorityServiceImpl implements AuthorityService {
         Authority authority = new Authority(authorityDto.getName(), authorityDto.getDescription());
 
         authorityRepository.save(authority);
+
+        databaseChangeRepository.save(new DatabaseChange("Created authority with name " + authority.getName()));
     }
 
 }

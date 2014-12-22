@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface UserService {
 
+    long count();
+
     List<UserDto> findAll();
 
     Page<UserDto> findAll(int page);

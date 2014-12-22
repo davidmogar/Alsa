@@ -1,9 +1,12 @@
 package com.davidmogar.alsa.services.auth.internal;
 
+import com.davidmogar.alsa.domain.auth.Authority;
 import com.davidmogar.alsa.domain.auth.User;
+import com.davidmogar.alsa.domain.change.DatabaseChange;
 import com.davidmogar.alsa.dto.auth.UserDto;
 import com.davidmogar.alsa.repositories.auth.AuthorityRepository;
 import com.davidmogar.alsa.repositories.auth.UserRepository;
+import com.davidmogar.alsa.repositories.change.DatabaseChangeRepository;
 import com.davidmogar.alsa.services.auth.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +28,15 @@ public class UserServiceImpl implements UserService {
     private AuthorityRepository authorityRepository;
 
     @Autowired
+    private DatabaseChangeRepository databaseChangeRepository;
+
+    @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public long count() {
+        return userRepository.count();
+    }
 
     @Override
     public List<UserDto> findAll() {
@@ -45,12 +56,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserDto userDto) {
+        Authority authority = authorityRepository.findByName(userDto.getAuthority());
+
         userRepository.save(User.getBuilder(userDto.getUsername(), userDto.getPassword(), userDto.isEnabled())
                 .firstname(userDto.getFirstname())
                 .lastname(userDto.getLastname())
                 .email(userDto.getEmail())
-                .authority(authorityRepository.findByName(userDto.getAuthority()))
+                .authority(authority)
                 .build());
+
+        databaseChangeRepository.save(new DatabaseChange("Created user with username " + userDto.getUsername() + " and " +
+                "authority " + authority.getName()));
     }
 
     /**
