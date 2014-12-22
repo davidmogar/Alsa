@@ -7,23 +7,28 @@
 </div>
 
 <div id="page-content">
-    <div class="panel">
+    <div class="panel panel-primary">
         <div class="panel-heading">
             News creation form
         </div>
 
-        <div class="panel-content">
+        <div class="panel-body">
             <spring:form commandName="news" action="save">
-                <spring:label path="title">Title</spring:label>
-                <spring:input path="title" class="u-full-width" type="text" placeholder="Title of the news"
-                              required="true"/>
-                <spring:errors path="title" cssClass="validation-error"/>
+                <div class="form-group">
+                    <spring:label path="title">Title</spring:label>
+                    <spring:input path="title" class="form-control" type="text" placeholder="Title of the news"
+                                  required="true"/>
+                    <spring:errors path="title" cssClass="validation-error"/>
+                </div>
 
-                <spring:label path="title">Text</spring:label>
-                <spring:textarea path="text" class="u-full-width" placeholder="News text" required="true"/>
-                <spring:errors path="text" cssClass="validation-error"/>
+                <div class="form-group">
+                    <spring:label path="title">Text</spring:label>
+                    <spring:textarea path="text" class="form-control" rows="5" placeholder="News text"
+                                     required="true"/>
+                    <spring:errors path="text" cssClass="validation-error"/>
+                </div>
 
-                <input class="button-primary" type="submit" value="Submit"/>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </spring:form>
         </div>
     </div>

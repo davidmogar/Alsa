@@ -3,14 +3,14 @@
 <footer>
     <div id="footer-content" class="container">
         <div class="row">
-            <div class="four columns">
+            <div class="col-md-4">
                 <h3>About Us</h3>
 
                 <p>ALSA cuenta con más de cien años de experiencia y una vocación de innovación permanente. Somos la
                     organización líder en el sector español de transporte de viajeros por carretera.</p>
             </div>
 
-            <div class="four columns">
+            <div class="col-md-4">
                 <h3>Quick links</h3>
 
                 <ul>
@@ -24,7 +24,7 @@
                 </ul>
             </div>
 
-            <div class="four columns">
+            <div class="col-md-4">
                 <h3>Contact</h3>
 
                 <ul>

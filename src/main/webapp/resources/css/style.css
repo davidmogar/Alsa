@@ -1,6 +1,7 @@
 body {
-    /*font-family: 'Open Sans', sans-serif;*/
-    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5em;
+    line-height: 1.6;
 }
 
 #quick-bar {
@@ -8,7 +9,7 @@ body {
     color: white;
 }
 
-#quick-bar p, ul, ul li {
+#quick-bar p, #quick-bar ul {
     margin-bottom: 0;
 }
 
@@ -16,21 +17,32 @@ body {
     padding: 1em 1em 0;
 }
 
-#quick-bar p span.flaticon-phone {
+#quick-bar span.glyphicon {
+    margin-right: 0.5em;
+}
+
+#quick-bar li span.glyphicon {
+    font-size: 1.1em;
+}
+
+#quick-bar li span.glyphicon {
     float: left;
-    margin: -0.3em 0.3em 0 0;
+    margin-top: 0.2em;
+}
+
+#quick-bar p span.glyphicon {
+    float: left;
+    margin: 0.3em;
 }
 
 #quick-bar ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     text-align: right;
 }
 
 #quick-bar ul li {
     display: inline-block;
-    margin: 0 -0.13em;
+    margin: 0 -0.14em;
     padding: 0.8em 1em;
 }
 
@@ -55,6 +67,7 @@ nav {
 nav h1 {
     color: #1d212d;
     font-family: 'Droid Serif', serif;
+    font-size: 3.4em;
     font-weight: 700;
     letter-spacing: 0.04em;
     margin-bottom: 0;
@@ -69,7 +82,7 @@ nav h2 {
 
 nav ul {
     list-style-type: none;
-    margin: 0.9em 0 0;
+    margin: 3.2em 0 0;
     padding: 0;
     text-align: right;
 }
@@ -90,55 +103,26 @@ nav ul li a.active {
     font-weight: bold;
 }
 
-#carousel div.image.item {
-    background-position: 50% 50%;
-    background-size: cover;
-    height: 600px;
-}
-
-#carousel div.item div.box {
-    background-color: rgba(255, 255, 255, 0.5);
-    font-weight: 400;
-    max-width: 30%;
-    padding: 1em;
-    position: absolute;
-}
-
-#carousel div.box.top {
-    top: 2em;
-}
-
-#carousel div.box.bottom {
-    bottom: 2em;
-}
-
-#carousel div.box.right {
-    right: 2em;
-}
-
-#carousel div.box.left {
-    left: 2em;
-}
-
-#carousel div.item div.box h3 {
-    font-size: 3rem;
-}
-
-#carousel div.item div.box p {
-    margin-bottom: 0;
-}
-
-#carousel div.item div.box a {
-    color: #222;
-    font-weight: bold;
-}
-
 #news {
     padding: 3em 0;
 }
 
+#news h3 {
+    font-size: 2.3em;
+}
+
 #news h4 {
-    font-size: 2.8rem;
+    font-size: 1.6em;
+    margin-top: 1em;
+}
+
+#news p {
+    word-wrap: break-word;
+}
+
+#news span {
+    display: block;
+    margin-bottom: 1em;
 }
 
 #news div.news-item:not(:first-of-type) {
@@ -156,11 +140,6 @@ nav ul li a.active {
     font-size: 1.8em;
 }
 
-#about-us a.button {
-    background-color: white;
-    color: #222;
-}
-
 footer {
     background-color: #1d212d;
     color: white;
@@ -175,6 +154,7 @@ footer h3 {
 footer ul {
     margin-bottom: 2.5rem;
     list-style-type: none;
+    padding-left: 0;
 }
 
 footer ul li a {

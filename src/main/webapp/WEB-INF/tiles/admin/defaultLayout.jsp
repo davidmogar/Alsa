@@ -17,30 +17,27 @@
   <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="<c:url value='/resources/css/normalize.css'/>" type="text/css"/>
-  <link rel="stylesheet" href="<c:url value='/resources/css/skeleton.css'/>" type="text/css"/>
-  <link rel="stylesheet" href="<c:url value='/resources/css/flaticon.css'/>" type="text/css"/>
+  <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>" type="text/css"/>
   <link rel="stylesheet" href="<c:url value='/resources/css/admin.css'/>" type="text/css"/>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="<c:url value='/resources/img/favicon.png'/>" />
-
-  <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/admin.js'/>"></script>
+  <link rel="icon" type="image/png" href="<c:url value='/resources/img/favicon.ico'/>"/>
 </head>
 <body>
   <tiles:insertAttribute name="header" />
 
   <div id="wrapper" class="row">
-    <div id="left-panel" class="three columns">
+    <div id="left-panel" class="col-md-3">
       <tiles:insertAttribute name="navigation"/>
     </div>
 
-    <div id="right-panel" class="nine columns">
+    <div id="right-panel" class="col-md-9">
       <tiles:insertAttribute name="content"/>
     </div>
   </div>
 
-  <tiles:insertAttribute name="footer" />
+  <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/admin.js'/>"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@
         <put-attribute name="header" value="/WEB-INF/tiles/admin/header.jsp"/>
         <put-attribute name="navigation" value="/WEB-INF/tiles/admin/navigation.jsp" cascade="true"/>
         <put-attribute name="content" value=""/>
-        <put-attribute name="footer" value="/WEB-INF/tiles/admin/footer.jsp"/>
+        <put-attribute name="current" value="" cascade="true"/>
     </definition>
 
     <!-- Admin pages -->
@@ -27,34 +27,42 @@
 
     <definition name="admin.authorities.create" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/auth/authorities/create.jsp"/>
+        <put-attribute name="current" value="authorities" cascade="true"/>
     </definition>
 
     <definition name="admin.authorities.list" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/auth/authorities/list.jsp"/>
+        <put-attribute name="current" value="authorities" cascade="true"/>
     </definition>
 
     <definition name="admin.news.create" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/news/create.jsp"/>
+        <put-attribute name="current" value="news" cascade="true"/>
     </definition>
 
     <definition name="admin.news.list" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/news/list.jsp"/>
+        <put-attribute name="current" value="news" cascade="true"/>
     </definition>
 
     <definition name="admin.users.create" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/auth/users/create.jsp"/>
+        <put-attribute name="current" value="users" cascade="true"/>
     </definition>
 
     <definition name="admin.users.list" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/auth/users/list.jsp"/>
+        <put-attribute name="current" value="users" cascade="true"/>
     </definition>
 
     <definition name="admin.places.create" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/places/create.jsp"/>
+        <put-attribute name="current" value="places" cascade="true"/>
     </definition>
 
     <definition name="admin.places.list" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/places/list.jsp"/>
+        <put-attribute name="current" value="places" cascade="true"/>
     </definition>
 
     <!-- Site pages -->

@@ -17,24 +17,19 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="<c:url value='/resources/css/normalize.css'/>" type="text/css"/>
-    <link rel="stylesheet" href="<c:url value='/resources/css/skeleton.css'/>" type="text/css"/>
-    <link rel="stylesheet" href="<c:url value='/resources/css/flaticon.css'/>" type="text/css"/>
+    <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>" type="text/css"/>
-
-    <!-- Owl stylesheet -->
-    <link rel="stylesheet" href="<c:url value='/resources/owl-carousel/owl.carousel.css'/>">
-    <link rel="stylesheet" href="<c:url value='/resources/owl-carousel/owl.theme.css'/>">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="<c:url value='/resources/img/favicon.ico'/>"/>
-
-    <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
-    <script src="<c:url value='/resources/owl-carousel/owl.carousel.min.js'/>"></script>
 </head>
 <body>
 <tiles:insertAttribute name="header"/>
 <tiles:insertAttribute name="content"/>
 <tiles:insertAttribute name="footer"/>
+
+<script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
+<script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+<script src="<c:url value='/resources/js/site.js'/>"></script>
 </body>
 </html>

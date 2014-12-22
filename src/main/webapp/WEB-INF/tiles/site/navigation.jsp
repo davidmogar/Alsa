@@ -2,12 +2,12 @@
 
 <nav class="row">
     <div class="container">
-        <div class="four columns">
+        <div class="col-md-4">
             <h1>ALSA</h1>
 
             <h2>Making travel simpler</h2>
         </div>
-        <div class="eight columns">
+        <div class="col-md-8">
             <ul>
                 <li><a href="#">Plan a journey</a></li>
                 <li><a href="#">Offers</a></li>

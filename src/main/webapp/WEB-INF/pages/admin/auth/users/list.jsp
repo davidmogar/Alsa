@@ -8,13 +8,13 @@
 </div>
 
 <div id="page-content">
-    <div class="panel">
+    <div class="panel panel-primary">
         <div class="panel-heading">
             List of users in the system
         </div>
 
-        <div class="panel-content">
-            <table class="u-full-width">
+        <div class="panel-body">
+            <table class="table table-bordered table-responsive table-striped">
                 <thead>
                 <tr>
                     <th>Username</th>

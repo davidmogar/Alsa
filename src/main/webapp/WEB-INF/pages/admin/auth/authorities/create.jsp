@@ -7,24 +7,30 @@
 </div>
 
 <div id="page-content">
-    <div class="panel">
+    <div class="panel panel-primary">
         <div class="panel-heading">
             Authorities creation form
         </div>
 
-        <div class="panel-content">
+        <div class="panel-body">
             <spring:form commandName="authority" action="save">
-                <spring:label path="name">Name</spring:label>
-                <spring:input path="name" class="u-full-width" type="text" placeholder="Name of the new authority"
-                              required="true"/>
-                <spring:errors path="name" cssClass="validation-error"/>
+                <div class="form-group">
+                    <spring:label path="name">Name</spring:label>
+                    <spring:input path="name" class="form-control" type="text"
+                                  placeholder="Name of the new authority"
+                                  required="true"/>
+                    <spring:errors path="name" cssClass="validation-error"/>
+                </div>
 
-                <spring:label path="description">Description</spring:label>
-                <spring:textarea path="description" class="u-full-width" placeholder="Small description of privileges"
-                                 required="true"/>
-                <spring:errors path="description" cssClass="validation-error"/>
+                <div class="form-group">
+                    <spring:label path="description">Description</spring:label>
+                    <spring:textarea path="description" class="form-control"
+                                     placeholder="Small description of privileges"
+                                     required="true"/>
+                    <spring:errors path="description" cssClass="validation-error"/>
+                </div>
 
-                <input class="button-primary" type="submit" value="Submit"/>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </spring:form>
         </div>
     </div>
