@@ -1,7 +1,6 @@
-package com.davidmogar.alsa.web.admin.auth;
+package com.davidmogar.alsa.web.controllers.auth;
 
 import com.davidmogar.alsa.dto.auth.AuthorityDto;
-import com.davidmogar.alsa.dto.news.NewsDto;
 import com.davidmogar.alsa.services.auth.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

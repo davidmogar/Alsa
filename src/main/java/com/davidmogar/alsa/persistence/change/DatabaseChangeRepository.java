@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.repositories.change;
+package com.davidmogar.alsa.persistence.change;
 
 import com.davidmogar.alsa.domain.change.DatabaseChange;
 import org.springframework.data.jpa.repository.JpaRepository;

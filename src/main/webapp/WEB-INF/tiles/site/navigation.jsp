@@ -3,7 +3,7 @@
 <nav class="row">
     <div class="container">
         <div class="col-md-4">
-            <h1>ALSA</h1>
+            <h1><a href="${pageContext.request.contextPath}/">ALSA</a></h1>
 
             <h2>Making travel simpler</h2>
         </div>

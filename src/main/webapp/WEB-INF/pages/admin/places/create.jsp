@@ -13,7 +13,7 @@
         </div>
 
         <div class="panel-body">
-            <spring:form commandName="place" action="save" enctype="multipart/form-data">
+            <spring:form commandName="place" action="save" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <spring:label path="name">Name</spring:label>
                     <spring:input path="name" class="form-control" type="text" placeholder="Name of the place"

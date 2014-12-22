@@ -1,10 +1,10 @@
 package com.davidmogar.alsa.domain.places;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.davidmogar.alsa.domain.routes.Route;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Place {
@@ -21,6 +21,12 @@ public class Place {
     private Long longitude;
 
     private String imagePath;
+
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.REMOVE)
+    private Set<Route> destinationRoutes;
+
+    @OneToMany(mappedBy = "origin", cascade = CascadeType.REMOVE)
+    private Set<Route> originRoutes;
 
     public static Builder getBuilder(String name) {
         return new Builder(name);
@@ -64,6 +70,22 @@ public class Place {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public Set<Route> getDestinationRoutes() {
+        return destinationRoutes;
+    }
+
+    public void setDestinationRoutes(Set<Route> destinationRoutes) {
+        this.destinationRoutes = destinationRoutes;
+    }
+
+    public Set<Route> getOriginRoutes() {
+        return originRoutes;
+    }
+
+    public void setOriginRoutes(Set<Route> originRoutes) {
+        this.originRoutes = originRoutes;
     }
 
     public static class Builder {

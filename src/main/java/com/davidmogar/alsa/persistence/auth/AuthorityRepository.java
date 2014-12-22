@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.repositories.auth;
+package com.davidmogar.alsa.persistence.auth;
 
 import com.davidmogar.alsa.domain.auth.Authority;
 import org.springframework.data.jpa.repository.JpaRepository;

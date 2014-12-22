@@ -1,7 +1,7 @@
 package com.davidmogar.alsa.services.change.internal;
 
 import com.davidmogar.alsa.dto.change.DatabaseChangeDto;
-import com.davidmogar.alsa.repositories.change.DatabaseChangeRepository;
+import com.davidmogar.alsa.persistence.change.DatabaseChangeRepository;
 import com.davidmogar.alsa.services.change.DatabaseChangeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

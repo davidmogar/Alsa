@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.web;
+package com.davidmogar.alsa.web.controllers;
 
 import com.davidmogar.alsa.services.news.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;

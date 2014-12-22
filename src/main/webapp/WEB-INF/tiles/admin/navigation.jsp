@@ -41,7 +41,7 @@
                 <li><a href="${pageContext.request.contextPath}/admin/places/list">List places</a></li>
             </ul>
         </li>
-        <li><p><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span><a
-                href="${pageContext.request.contextPath}/">Return to site</a></p></li>
+        <li><p><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><a
+                href="${pageContext.request.contextPath}/logout">Log out</a></p></li>
     </ul>
 </nav>

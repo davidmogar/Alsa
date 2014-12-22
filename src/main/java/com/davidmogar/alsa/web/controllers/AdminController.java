@@ -1,8 +1,9 @@
-package com.davidmogar.alsa.web.admin;
+package com.davidmogar.alsa.web.controllers;
 
 import com.davidmogar.alsa.services.auth.UserService;
 import com.davidmogar.alsa.services.change.DatabaseChangeService;
 import com.davidmogar.alsa.services.places.PlaceService;
+import com.davidmogar.alsa.web.listeners.ActiveSessionsListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class AdminController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showHome(Model model) {
+        model.addAttribute("activeSessions", ActiveSessionsListener.getActiveSessions());
         model.addAttribute("places", placeService.count());
         model.addAttribute("users", userService.count());
         model.addAttribute("changes", databaseChangeService.findRecentChanges());

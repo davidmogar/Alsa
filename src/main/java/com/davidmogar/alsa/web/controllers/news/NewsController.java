@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.web.admin.news;
+package com.davidmogar.alsa.web.controllers.news;
 
 import com.davidmogar.alsa.dto.news.NewsDto;
 import com.davidmogar.alsa.services.news.NewsService;

@@ -67,8 +67,20 @@
 
     <!-- Site pages -->
 
+    <definition name="site.error" extends="siteLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/site/error.jsp"/>
+        <put-attribute name="title" value="Alsa: Resoure not available"/>
+        <put-attribute name="active" value="index" cascade="true"/>
+    </definition>
+
     <definition name="site.home" extends="siteLayout">
         <put-attribute name="content" value="/WEB-INF/pages/site/home.jsp"/>
+        <put-attribute name="active" value="index" cascade="true"/>
+    </definition>
+
+    <definition name="site.auth.login" extends="siteLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/site/auth/login.jsp"/>
+        <put-attribute name="title" value="Alsa: Login"/>
         <put-attribute name="active" value="index" cascade="true"/>
     </definition>
 </tiles-definitions>

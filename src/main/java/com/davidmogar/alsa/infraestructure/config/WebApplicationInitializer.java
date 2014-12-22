@@ -4,6 +4,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.*;
@@ -33,6 +34,11 @@ public class WebApplicationInitializer implements org.springframework.web.WebApp
     }
 
     private void configureDispatcherServlet(ServletContext servletContext, WebApplicationContext rootContext) {
+        FilterRegistration.Dynamic springSecurityFilterChain = servletContext.addFilter("springSecurityFilterChain", new
+                DelegatingFilterProxy());
+        springSecurityFilterChain.addMappingForUrlPatterns(null, false, "/*");
+        springSecurityFilterChain.setAsyncSupported(true);
+
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet(
                 DISPATCHER_SERVLET_NAME,
                 new DispatcherServlet(rootContext)

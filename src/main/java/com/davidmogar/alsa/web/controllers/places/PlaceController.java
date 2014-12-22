@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.web.admin.places;
+package com.davidmogar.alsa.web.controllers.places;
 
 import com.davidmogar.alsa.dto.places.PlaceDto;
 import com.davidmogar.alsa.infraestructure.utils.MultipartFileUploader;
@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/places")
@@ -38,7 +39,7 @@ public class PlaceController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveNews(@ModelAttribute("place") PlaceDto placeDto, BindingResult bindingResult,
+    public String savePlaces(@Valid @ModelAttribute("place") PlaceDto placeDto, BindingResult bindingResult,
                            @RequestParam("image") MultipartFile image, HttpServletRequest request) {
         String view = "admin.places.create";
 

@@ -4,6 +4,82 @@ body {
     line-height: 1.6;
 }
 
+/* Common */
+
+.btn-primary, .btn-primary:focus, .btn-primary:hover {
+    background-color: #1d212d;
+    border-color: #1d212d;
+}
+
+.panel, .panel-heading {
+    border-radius: 0 !important;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #1d212d;
+    border-color: #1d212d;
+}
+
+.error403 {
+    margin-bottom: 7em;
+}
+
+.error403.alert {
+    border-radius: 0;
+}
+
+.lock {
+    background: url(../img/lock.png) no-repeat center center;
+    background-size: cover;
+    margin-bottom: 7em;
+
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+.form-signin {
+    background-color: white;
+    margin: 4em auto;
+    max-width: 25em;
+    padding: 1em;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 1em;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    position: relative;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-bottom: -1px;
+}
+
+.form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 10px;
+}
+
 #quick-bar {
     background-color: #1d212d;
     color: white;
@@ -22,11 +98,8 @@ body {
 }
 
 #quick-bar li span.glyphicon {
-    font-size: 1.1em;
-}
-
-#quick-bar li span.glyphicon {
     float: left;
+    font-size: 1.1em;
     margin-top: 0.2em;
 }
 
@@ -71,6 +144,11 @@ nav h1 {
     font-weight: 700;
     letter-spacing: 0.04em;
     margin-bottom: 0;
+}
+
+nav a, nav a:hover {
+    color: #1d212d;
+    text-decoration: none;
 }
 
 nav h2 {
@@ -157,9 +235,23 @@ footer ul {
     padding-left: 0;
 }
 
+footer div.row div:last-of-type ul li {
+    padding: 0.5em 0;
+}
+
+footer li span.glyphicon {
+    float: left;
+    font-size: 1.1em;
+    margin: 0.2em 0.5em 0 0;
+}
+
 footer ul li a {
     color: #91ba33;
     text-decoration: none;
+}
+
+footer ul li a:hover {
+    color: white;
 }
 
 footer div#footer-content {
@@ -174,4 +266,21 @@ footer div#copyright {
 footer div#copyright p {
     margin: 0;
     padding: 1.8em 0;
+}
+
+@media (max-width: 992px) {
+
+    #quick-bar p {
+        display: none;
+    }
+
+    #quick-bar ul {
+        padding-left: 0 !important;
+        text-align: center;
+    }
+
+    nav, nav ul {
+        text-align: center;
+    }
+
 }

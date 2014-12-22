@@ -1,20 +1,16 @@
-package com.davidmogar.alsa.web.admin.auth;
+package com.davidmogar.alsa.web.controllers.auth;
 
 import com.davidmogar.alsa.dto.auth.AuthorityDto;
 import com.davidmogar.alsa.dto.auth.UserDto;
-import com.davidmogar.alsa.dto.news.NewsDto;
 import com.davidmogar.alsa.services.auth.AuthorityService;
 import com.davidmogar.alsa.services.auth.UserService;
 import com.davidmogar.alsa.web.validation.auth.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 

@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.repositories.news;
+package com.davidmogar.alsa.persistence.news;
 
 import com.davidmogar.alsa.domain.news.News;
 import org.springframework.data.jpa.repository.JpaRepository;

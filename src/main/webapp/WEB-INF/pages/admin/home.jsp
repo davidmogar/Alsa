@@ -17,14 +17,14 @@
                             <span class="glyphicon glyphicon-user" aria-hidden="true"/>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <h4>${users}</h4>
+                            <h4>${activeSessions}</h4>
 
-                            <p>Users</p>
+                            <p>Active sessions</p>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <a href="${pageContext.request.contextPath}/admin/users/list">View details</a>
+                    <a href="${pageContext.request.contextPath}/admin/users/list">View all users</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <a href="${pageContext.request.contextPath}/admin/places/list">View details</a>
+                    <a href="${pageContext.request.contextPath}/admin/places/list">View all places</a>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <a href="${pageContext.request.contextPath}/admin/users/list">View details</a>
+                    <a href="${pageContext.request.contextPath}/admin/users/list">View all routes</a>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <a href="${pageContext.request.contextPath}/admin/places/list">View details</a>
+                    <a href="${pageContext.request.contextPath}/admin/places/list">View all schedules</a>
                 </div>
             </div>
         </div>

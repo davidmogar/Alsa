@@ -28,9 +28,12 @@
                 <h3>Contact</h3>
 
                 <ul>
-                    <li><span class="flaticon-phone"></span> 902 42 22 42</li>
-                    <li><span class="flaticon-info"></span> <a href="#">Ayuda online</a></li>
-                    <li><span class="flaticon-place"></span> Miguel Fleta 4, 2 28037 Madrid</li>
+                    <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 902 42 22 42</li>
+                    <li><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        <a href="#">Ayuda online</a></li>
+                    <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Miguel Fleta 4, 2 28037
+                        Madrid
+                    </li>
                 </ul>
             </div>
         </div>

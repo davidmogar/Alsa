@@ -8,7 +8,7 @@
             <h2>Making travel simpler</h2>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9 text-right">
 
         </div>
     </div>
