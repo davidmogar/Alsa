@@ -1,5 +1,6 @@
 package com.davidmogar.alsa.infraestructure.config;
 
+import com.davidmogar.alsa.web.listeners.ActiveSessionsListener;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -31,6 +32,9 @@ public class WebApplicationInitializer implements org.springframework.web.WebApp
         EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
         configureCharacterEncodingFilter(servletContext, dispatcherTypes);
         servletContext.addListener(new ContextLoaderListener(rootContext));
+
+        /* Add session listener */
+        servletContext.addListener(ActiveSessionsListener.class);
     }
 
     private void configureDispatcherServlet(ServletContext servletContext, WebApplicationContext rootContext) {

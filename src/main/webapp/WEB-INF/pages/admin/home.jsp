@@ -19,7 +19,7 @@
                         <div class="col-xs-9 text-right">
                             <h4>${activeSessions}</h4>
 
-                            <p>Active sessions</p>
+                            <p>Active users</p>
                         </div>
                     </div>
                 </div>
