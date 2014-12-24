@@ -17,7 +17,7 @@
                             <span class="glyphicon glyphicon-user" aria-hidden="true"/>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <h4>${activeSessions}</h4>
+                            <h4>${activeUsers}</h4>
 
                             <p>Active users</p>
                         </div>

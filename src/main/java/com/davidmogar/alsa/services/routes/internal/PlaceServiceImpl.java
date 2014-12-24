@@ -1,11 +1,11 @@
-package com.davidmogar.alsa.services.places.internal;
+package com.davidmogar.alsa.services.routes.internal;
 
 import com.davidmogar.alsa.domain.change.DatabaseChange;
-import com.davidmogar.alsa.domain.places.Place;
-import com.davidmogar.alsa.dto.places.PlaceDto;
+import com.davidmogar.alsa.domain.routes.Place;
+import com.davidmogar.alsa.dto.routes.PlaceDto;
 import com.davidmogar.alsa.persistence.change.DatabaseChangeRepository;
-import com.davidmogar.alsa.persistence.places.PlaceRepository;
-import com.davidmogar.alsa.services.places.PlaceService;
+import com.davidmogar.alsa.persistence.routes.PlaceRepository;
+import com.davidmogar.alsa.services.routes.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

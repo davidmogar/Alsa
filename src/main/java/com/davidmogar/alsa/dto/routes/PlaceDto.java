@@ -1,6 +1,6 @@
-package com.davidmogar.alsa.dto.places;
+package com.davidmogar.alsa.dto.routes;
 
-import com.davidmogar.alsa.domain.places.Place;
+import com.davidmogar.alsa.domain.routes.Place;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

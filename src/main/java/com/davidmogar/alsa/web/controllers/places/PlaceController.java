@@ -1,8 +1,8 @@
 package com.davidmogar.alsa.web.controllers.places;
 
-import com.davidmogar.alsa.dto.places.PlaceDto;
+import com.davidmogar.alsa.dto.routes.PlaceDto;
 import com.davidmogar.alsa.infraestructure.utils.MultipartFileUploader;
-import com.davidmogar.alsa.services.places.PlaceService;
+import com.davidmogar.alsa.services.routes.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;

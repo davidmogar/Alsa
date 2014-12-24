@@ -1,7 +1,5 @@
 package com.davidmogar.alsa.domain.routes;
 
-import com.davidmogar.alsa.domain.places.Place;
-
 import javax.persistence.*;
 
 @Entity
@@ -26,6 +24,10 @@ public class Route {
     @ManyToOne
     @JoinColumn
     private Place destination;
+
+    public static Builder getBuilder(String name, Place origin, Place destination) {
+        return new Builder(name, origin, destination);
+    }
 
     public Long getId() {
         return id;
@@ -73,6 +75,34 @@ public class Route {
 
     public void setDestination(Place destination) {
         this.destination = destination;
+    }
+
+    public static class Builder {
+        Route built;
+
+        Builder(String name, Place origin, Place destination) {
+            built = new Route();
+            built.name = name;
+            built.origin = origin;
+            built.destination = destination;
+        }
+
+        public Builder distance(Long distance) {
+            built.distance = distance;
+
+            return this;
+        }
+
+        public Builder description(String description) {
+            built.description = description;
+
+            return this;
+        }
+
+        public Route build() {
+            return built;
+        }
+
     }
 
 }

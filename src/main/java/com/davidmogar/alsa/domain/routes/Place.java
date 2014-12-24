@@ -1,7 +1,5 @@
-package com.davidmogar.alsa.domain.places;
+package com.davidmogar.alsa.domain.routes;
 
-
-import com.davidmogar.alsa.domain.routes.Route;
 
 import javax.persistence.*;
 import java.util.Set;

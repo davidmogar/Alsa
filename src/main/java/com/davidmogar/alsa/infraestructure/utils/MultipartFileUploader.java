@@ -30,7 +30,7 @@ public class MultipartFileUploader {
 
         LOGGER.debug("Uploading to " + absolutePath);
 
-        /* Copy image to places directory */
+        /* Copy image to routes directory */
         File file = new File(absolutePath + multipartFile.getOriginalFilename());
         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
         stream.write(bytes);
