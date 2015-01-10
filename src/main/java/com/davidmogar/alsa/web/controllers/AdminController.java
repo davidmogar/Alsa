@@ -2,7 +2,7 @@ package com.davidmogar.alsa.web.controllers;
 
 import com.davidmogar.alsa.services.auth.UserService;
 import com.davidmogar.alsa.services.change.DatabaseChangeService;
-import com.davidmogar.alsa.services.routes.PlaceService;
+import com.davidmogar.alsa.services.route.PlaceService;
 import com.davidmogar.alsa.web.listeners.ActiveSessionsListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.session.SessionRegistry;

@@ -10,7 +10,7 @@
 
         <form name="login" class="form-signin" role="form" method="post"
               action="${pageContext.request.contextPath}/login">
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h3 class="form-signin-heading">Please sign in</h3>
             <label for="username" class="sr-only">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Your username"
                    required="true" autofocus="true"/>

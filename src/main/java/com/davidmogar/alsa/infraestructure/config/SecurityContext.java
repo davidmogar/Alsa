@@ -40,9 +40,8 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
         http.sessionManagement().maximumSessions(1).expiredUrl("/login").sessionRegistry(sessionRegistry());
 
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/", "/login", "/login/**", "/logout").permitAll()
                 .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")

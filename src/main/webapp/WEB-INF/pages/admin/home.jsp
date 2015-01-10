@@ -106,7 +106,7 @@
                 <tbody>
                 <c:forEach items="${changes}" var="change">
                     <tr>
-                        <td>${change.date}</td>
+                        <td>${change.day}</td>
                         <td>${change.text}</td>
                     </tr>
                 </c:forEach>

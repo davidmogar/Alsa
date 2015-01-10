@@ -17,6 +17,7 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="<c:url value='/resources/css/jquery-ui.min.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>" type="text/css"/>
 
@@ -29,7 +30,9 @@
 <tiles:insertAttribute name="footer"/>
 
 <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
+<script src="<c:url value='/resources/js/jquery-ui.min.js'/>"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/resources/js/site.js'/>"></script>
+<script>var ctx = "${pageContext.request.contextPath}"</script>
 </body>
 </html>

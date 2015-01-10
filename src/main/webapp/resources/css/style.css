@@ -2,6 +2,87 @@ body {
     font-family: 'Raleway', sans-serif;
     font-size: 1.5em;
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Autocomplete */
+.ui-autocomplete {
+    max-height: 10em;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+* html .ui-autocomplete {
+    height: 10em;
+}
+
+.ui-menu-item.ui-state-focus, .ui-menu-item:hover {
+    background: #1d212d;
+    border: 1px solid #1d212d;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+.ui-menu-item.ui-state-focus a, .ui-menu-item:hover a {
+    color: white;
+}
+
+/* Datepicker */
+.ui-datepicker.ui-corner-all {
+    border-radius: 0;
+}
+
+.ui-datepicker-next-hover {
+    right: 2px !important;
+    top: 2px !important;
+}
+
+.ui-datepicker-prev-hover {
+    left: 2px !important;
+    top: 2px !important;
+}
+
+.ui-datepicker-prev:hover, .ui-datepicker-next:hover {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.ui-widget-header .ui-icon {
+    background-image: url("../img/jquery-ui/ui-icons_ffffff_256x240.png")
+}
+
+.ui-widget {
+    font-family: 'Raleway', sans-serif;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active {
+    border: 1px solid #1d212d;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+    color: #333;
+    font-weight: 400;
+}
+
+.ui-state-default:hover {
+    background: #1d212d;
+    border: 1px solid #1d212d;
+    color: white;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight {
+    background: #1d212d;
+    border: 1px solid #1d212d;
+    color: white;
+    font-weight: 400;
+}
+
+.ui-widget-header {
+    background: #1d212d;
+    border: none;
+    font-weight: 400;
 }
 
 /* Common */
@@ -28,7 +109,7 @@ body {
     border-radius: 0;
 }
 
-.lock {
+div.lock {
     background: url(../img/lock.png) no-repeat center center;
     background-size: cover;
     margin-bottom: 7em;
@@ -218,6 +299,118 @@ nav ul li a.active {
     font-size: 1.8em;
 }
 
+/* Journey */
+div.journey {
+    background: url(../img/map.png) no-repeat center center;
+    background-size: cover;
+    margin-bottom: 7em;
+
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+div.journey form {
+    background-color: white;
+    margin: 4em 0;
+    max-width: 25em;
+    padding: 1em;
+}
+
+div.journey .btn {
+    margin-top: 1em;
+}
+
+/* Schedules */
+#schedules {
+    margin-bottom: 4em;
+    text-align: center;
+}
+
+#schedules table tr td:nth-child(4) {
+    text-transform: capitalize;
+}
+
+#route {
+    margin-top: 3em;
+}
+
+#route .place {
+    padding: 0;
+    position: relative;
+}
+
+#route .place span.dot {
+    background: #fbe8aa;
+    border-radius: 50%;
+    display: block;
+    height: 30px;
+    margin-top: -2.9em;
+    position: absolute;
+    top: 76px;
+    width: 30px;
+}
+
+#route .place h2 {
+    font-size: 1.3em;
+    margin: 0;
+    position: absolute;
+}
+
+#route .place:first-of-type h2 {
+    left: 20%;
+    margin-left: -15px;
+}
+
+#route .place:last-of-type h2 {
+    right: 20%;
+    margin-right: -15px;
+}
+
+#route .place:first-of-type span.dot {
+    left: 20%;
+    margin-left: -15px;
+}
+
+#route .place:last-of-type span.dot {
+    right: 20%;
+    margin-right: -15px;
+}
+
+#route .place span.dot:after {
+    background: #f9bb05;
+    border-radius: 50px;
+    content: ' ';
+    height: 14px;
+    left: 8px;
+    position: absolute;
+    top: 8px;
+    width: 14px;
+}
+
+#route .place > .progress {
+    border-radius: 0;
+    box-shadow: none;
+    height: 8px;
+    margin: 3em 0;
+    position: relative;
+}
+
+#route .place > .progress > .progress-bar {
+    box-shadow: none;
+    background: #fbe8aa;
+    width: 100%;
+}
+
+#route .place:first-child > .progress {
+    left: 20%;
+    width: 80%;
+}
+
+#route .place:last-child > .progress {
+    width: 80%;
+}
+
 footer {
     background-color: #1d212d;
     color: white;
@@ -283,4 +476,8 @@ footer div#copyright p {
         text-align: center;
     }
 
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    margin: 0 auto;
 }

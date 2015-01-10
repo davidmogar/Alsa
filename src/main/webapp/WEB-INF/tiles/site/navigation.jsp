@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-8">
             <ul>
-                <li><a href="#">Plan a journey</a></li>
+                <li><a href="${pageContext.request.contextPath}/journey">Plan a journey</a></li>
                 <li><a href="#">Offers</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Bus rental</a></li>

@@ -15,7 +15,7 @@ public class Authority {
 
     private String description;
 
-    @OneToMany(mappedBy = "authority", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "authority", cascade = CascadeType.ALL)
     private Set<User> users;
 
     public Authority() {

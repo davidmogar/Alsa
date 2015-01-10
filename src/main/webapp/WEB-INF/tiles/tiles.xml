@@ -9,6 +9,7 @@
         <put-attribute name="navigation" value="/WEB-INF/tiles/site/navigation.jsp" cascade="true"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/tiles/site/footer.jsp"/>
+        <put-attribute name="active" value="" cascade="true"/>
     </definition>
 
     <definition name="adminLayout" template="/WEB-INF/tiles/admin/defaultLayout.jsp">
@@ -33,6 +34,16 @@
     <definition name="admin.authorities.list" extends="adminLayout">
         <put-attribute name="content" value="/WEB-INF/pages/admin/auth/authorities/list.jsp"/>
         <put-attribute name="current" value="authorities" cascade="true"/>
+    </definition>
+
+    <definition name="admin.buses.create" extends="adminLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/buses/create.jsp"/>
+        <put-attribute name="current" value="authorities" cascade="true"/>
+    </definition>
+
+    <definition name="admin.buses.list" extends="adminLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/admin/buses/list.jsp"/>
+        <put-attribute name="current" value="buses" cascade="true"/>
     </definition>
 
     <definition name="admin.news.create" extends="adminLayout">
@@ -67,8 +78,8 @@
 
     <!-- Site pages -->
 
-    <definition name="site.error" extends="siteLayout">
-        <put-attribute name="content" value="/WEB-INF/pages/site/error.jsp"/>
+    <definition name="site.auth.error" extends="siteLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/site/auth/error.jsp"/>
         <put-attribute name="title" value="Alsa: Resoure not available"/>
         <put-attribute name="active" value="index" cascade="true"/>
     </definition>
@@ -76,6 +87,15 @@
     <definition name="site.home" extends="siteLayout">
         <put-attribute name="content" value="/WEB-INF/pages/site/home.jsp"/>
         <put-attribute name="active" value="index" cascade="true"/>
+    </definition>
+
+    <definition name="site.journey" extends="siteLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/site/journey.jsp"/>
+        <put-attribute name="active" value="journey" cascade="true"/>
+    </definition>
+
+    <definition name="site.journey.schedules" extends="siteLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/site/schedules.jsp"/>
     </definition>
 
     <definition name="site.auth.login" extends="siteLayout">

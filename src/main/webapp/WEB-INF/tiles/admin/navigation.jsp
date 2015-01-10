@@ -17,6 +17,14 @@
             </ul>
         </li>
         <li class="collapsible">
+            <p><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>Buses</p>
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <ul class="${current == 'buses' ? 'active' : ''}">
+                <li><a href="${pageContext.request.contextPath}/admin/buses/create">Create a bus</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/buses/list">List buses</a></li>
+            </ul>
+        </li>
+        <li class="collapsible">
             <p><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>News</p>
             <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <ul class="${current == 'news' ? 'active' : ''}">

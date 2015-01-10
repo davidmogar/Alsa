@@ -1,7 +1,5 @@
 package com.davidmogar.alsa.web.controllers.auth;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +10,7 @@ public class AuthController {
 
     @RequestMapping("/403")
     public String notAvailable() {
-        return "site.error";
+        return "site.auth.error";
     }
 
     @RequestMapping("/login")
