@@ -98,6 +98,18 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
+    public ScheduleDto findOne(long scheduleId) {
+        ScheduleDto scheduleDto = null;
+        Schedule schedule = scheduleRepository.findOne(scheduleId);
+
+        if (schedule != null) {
+            scheduleDto = new ScheduleDto(schedule);
+        }
+
+        return scheduleDto;
+    }
+
+    @Override
     public void save(ScheduleDto scheduleDto) {
         Place origin = placeRepository.findOne(scheduleDto.getRoute().getOrigin().getId());
         Place destination = placeRepository.findOne(scheduleDto.getRoute().getDestination().getId());

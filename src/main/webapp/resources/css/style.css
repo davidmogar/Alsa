@@ -5,6 +5,24 @@ body {
     overflow-x: hidden;
 }
 
+/* Table sorter */
+table.tablesorter thead tr .header {
+    background: url(../img/tablesorter/bg.gif) no-repeat center right;
+    cursor: pointer;
+}
+
+table.tablesorter thead tr .headerSortUp {
+    background-image: url(../img/tablesorter/asc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown {
+    background-image: url(../img/tablesorter/desc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #fbe8aa;
+}
+
 /* Autocomplete */
 .ui-autocomplete {
     max-height: 10em;
@@ -311,7 +329,7 @@ div.journey {
 }
 
 div.journey form {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     margin: 4em 0;
     max-width: 25em;
     padding: 1em;
@@ -327,7 +345,7 @@ div.journey .btn {
     text-align: center;
 }
 
-#schedules table tr td:nth-child(4) {
+#schedules table tr td:nth-child(5) {
     text-transform: capitalize;
 }
 
@@ -409,6 +427,43 @@ div.journey .btn {
 
 #route .place:last-child > .progress {
     width: 80%;
+}
+
+/* Book */
+#book {
+    background: url(../img/tickets.png) no-repeat center center;
+    background-size: cover;
+    text-align: center;
+
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+#controls {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 4em;
+    margin-top: 4em;
+    padding: 1em 1em 2em 1em;
+    text-align: center;
+}
+
+#controls h2 {
+    margin-bottom: 2em;
+}
+
+#controls p {
+    font-size: 1.2em;
+    margin: 1em 0;
+}
+
+#book-form {
+    margin-bottom: 5em;
+    margin-top: 4em;
+}
+
+#book-form button {
+    margin-top: 3em;
 }
 
 footer {

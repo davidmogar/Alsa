@@ -19,6 +19,8 @@ public interface ScheduleService {
 
     List<ScheduleDto> findByDate(Date date);
 
+    ScheduleDto findOne(long scheduleId);
+
     void save(ScheduleDto scheduleDto);
 
 }

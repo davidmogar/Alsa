@@ -1,4 +1,4 @@
-package com.davidmogar.alsa.web.controllers;
+package com.davidmogar.alsa.web.controllers.journey;
 
 import com.davidmogar.alsa.dto.route.RouteDto;
 import com.davidmogar.alsa.dto.schedule.ScheduleDto;
@@ -66,7 +66,7 @@ public class JourneyController {
     }
 
     @ModelAttribute("journeyData")
-    private JourneyData journeyDataDto() {
+    private JourneyData journeyData() {
         return new JourneyData();
     }
 

@@ -37,14 +37,15 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <table class="table table-bordered table-striped table-responsive">
+                <table id="schedulesTable" class="table table-bordered table-striped table-responsive tablesorter">
                     <thead>
                     <tr>
                         <th>Origin</th>
                         <th>Destination</th>
-                        <th>Departure</th>
-                        <th>Service</th>
-                        <th>Price</th>
+                        <th class="sortable">Departure</th>
+                        <th class="sortable">Hours</th>
+                        <th class="sortable">Service</th>
+                        <th class="sortable">Price</th>
                         <th>Book</th>
                     </tr>
                     </thead>
@@ -55,6 +56,7 @@
                             <td>${schedule.route.origin.name}</td>
                             <td>${schedule.route.destination.name}</td>
                             <td><fmt:formatDate type="both" value="${now}"/></td>
+                            <td></td>
                             <td>${fn:toLowerCase(schedule.bus.type)}</td>
                             <td></td>
                             <td><a class="btn btn-default"

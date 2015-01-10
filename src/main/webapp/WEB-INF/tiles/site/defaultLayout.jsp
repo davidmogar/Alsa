@@ -31,6 +31,7 @@
 
 <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
 <script src="<c:url value='/resources/js/jquery-ui.min.js'/>"></script>
+<script src="<c:url value='/resources/js/jquery.tablesorter.min.js'/>"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/resources/js/site.js'/>"></script>
 <script>var ctx = "${pageContext.request.contextPath}"</script>

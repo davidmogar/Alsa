@@ -11,6 +11,9 @@ $(document).ready(function () {
 
     setPlacesAutocomplete($('#origin'));
     setPlacesAutocomplete($('#destination'));
+
+    /* Enable sortable tables */
+    $("#schedulesTable").tablesorter( {selectorHeaders: 'thead th.sortable'} );
 });
 
 function getCurrentDate() {

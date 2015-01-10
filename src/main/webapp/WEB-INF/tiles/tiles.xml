@@ -94,6 +94,10 @@
         <put-attribute name="active" value="journey" cascade="true"/>
     </definition>
 
+    <definition name="site.journey.book" extends="siteLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/site/book.jsp"/>
+    </definition>
+
     <definition name="site.journey.schedules" extends="siteLayout">
         <put-attribute name="content" value="/WEB-INF/pages/site/schedules.jsp"/>
     </definition>
