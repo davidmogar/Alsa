@@ -53,7 +53,7 @@ public class JourneyController {
 
                 if (routeDto != null) {
                     model.addAttribute("route", routeDto);
-                    model.addAttribute("schedules", scheduleService.findAll(routeDto, date));
+                    model.addAttribute("oneWaySchedules", scheduleService.findAll(routeDto, date));
                 }
 
                 view = "site.journey.schedules";

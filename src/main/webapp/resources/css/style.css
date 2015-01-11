@@ -342,10 +342,14 @@ div.journey .btn {
 /* Schedules */
 #schedules {
     margin-bottom: 4em;
+}
+
+table.schedules {
+    margin-bottom: 4em;
     text-align: center;
 }
 
-#schedules table tr td:nth-child(5) {
+table.schedules tr td:nth-child(5) {
     text-transform: capitalize;
 }
 
@@ -464,6 +468,14 @@ div.journey .btn {
 
 #book-form button {
     margin-top: 3em;
+}
+
+#book-form fieldset {
+    margin-bottom: 4em;
+}
+
+#book-form input[type='checkbox'] {
+    margin-left: 1em;
 }
 
 footer {

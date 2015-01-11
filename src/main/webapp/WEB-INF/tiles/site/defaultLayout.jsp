@@ -19,7 +19,15 @@
 
     <link rel="stylesheet" href="<c:url value='/resources/css/jquery-ui.min.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>" type="text/css"/>
+    <link rel="stylesheet" href="<c:url value='/resources/css/jquery.seat-charts.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>" type="text/css"/>
+
+    <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
+    <script src="<c:url value='/resources/js/jquery-ui.min.js'/>"></script>
+    <script src="<c:url value='/resources/js/jquery.tablesorter.min.js'/>"></script>
+    <script src="<c:url value='/resources/js/jquery.seat-charts.min.js'/>"></script>
+    <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+    <script src="<c:url value='/resources/js/site.js'/>"></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="<c:url value='/resources/img/favicon.ico'/>"/>
@@ -28,12 +36,6 @@
 <tiles:insertAttribute name="header"/>
 <tiles:insertAttribute name="content"/>
 <tiles:insertAttribute name="footer"/>
-
-<script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
-<script src="<c:url value='/resources/js/jquery-ui.min.js'/>"></script>
-<script src="<c:url value='/resources/js/jquery.tablesorter.min.js'/>"></script>
-<script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
-<script src="<c:url value='/resources/js/site.js'/>"></script>
 <script>var ctx = "${pageContext.request.contextPath}"</script>
 </body>
 </html>

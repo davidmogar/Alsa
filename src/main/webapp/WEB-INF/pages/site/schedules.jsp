@@ -29,7 +29,7 @@
 
     <div id="schedules">
         <c:choose>
-            <c:when test="${empty schedules}">
+            <c:when test="${empty oneWaySchedules}">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <p>No schedules for that route</p>
@@ -37,7 +37,9 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <table id="schedulesTable" class="table table-bordered table-striped table-responsive tablesorter">
+                <h3>One way schedules</h3>
+                <table id="oneWaySchedulesTable"
+                       class="table table-bordered table-striped table-responsive tablesorter schedules">
                     <thead>
                     <tr>
                         <th>Origin</th>
@@ -50,7 +52,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${schedules}" var="schedule">
+                    <c:forEach items="${oneWaySchedules}" var="schedule" varStatus="status">
                         <c:set var="now" value="${schedule.date}"/>
                         <tr>
                             <td>${schedule.route.origin.name}</td>
@@ -59,13 +61,47 @@
                             <td></td>
                             <td>${fn:toLowerCase(schedule.bus.type)}</td>
                             <td></td>
-                            <td><a class="btn btn-default"
-                                   href="${pageContext.request.contextPath}/journey/book/${schedule.id}">
-                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></td>
+                            <td><input type="radio" name="oneWaySchedule" checked="${status.first}"
+                                       value="${schedule.id}"></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
+
+                <c:if test="${not empty returnSchedules}">
+                    <h3>Return schedules</h3>
+                    <table id="returnSchedulesTable"
+                           class="table table-bordered table-striped table-responsive tablesorter schedules">
+                        <thead>
+                        <tr>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th class="sortable">Departure</th>
+                            <th class="sortable">Hours</th>
+                            <th class="sortable">Service</th>
+                            <th class="sortable">Price</th>
+                            <th>Book</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${returnSchedules}" var="schedule" varStatus="status">
+                            <c:set var="now" value="${schedule.date}"/>
+                            <tr>
+                                <td>${schedule.route.origin.name}</td>
+                                <td>${schedule.route.destination.name}</td>
+                                <td><fmt:formatDate type="both" value="${now}"/></td>
+                                <td></td>
+                                <td>${fn:toLowerCase(schedule.bus.type)}</td>
+                                <td></td>
+                                <td><input type="radio" name="returnSchedule" checked="${status.first}" value="${schedule.id}"></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </c:if>
+
+                <button type="button" id="scheduleSelectionButton" class="btn btn-primary center-block">Continue
+                </button>
             </c:otherwise>
         </c:choose>
     </div>

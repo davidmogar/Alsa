@@ -14,6 +14,10 @@ public class BookData {
     private int cardExpirationYear;
     private int cardCsv;
 
+    private boolean travelingWithBike;
+    private boolean travelingWithPet;
+    private boolean insurance;
+
     private IdentificationType identificationType;
 
     public String getFirstName() {
@@ -86,6 +90,30 @@ public class BookData {
 
     public void setIdentificationType(IdentificationType identificationType) {
         this.identificationType = identificationType;
+    }
+
+    public boolean isTravelingWithBike() {
+        return travelingWithBike;
+    }
+
+    public void setTravelingWithBike(boolean travelingWithBike) {
+        this.travelingWithBike = travelingWithBike;
+    }
+
+    public boolean isTravelingWithPet() {
+        return travelingWithPet;
+    }
+
+    public void setTravelingWithPet(boolean travelingWithPet) {
+        this.travelingWithPet = travelingWithPet;
+    }
+
+    public boolean isInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(boolean insurance) {
+        this.insurance = insurance;
     }
 
 }

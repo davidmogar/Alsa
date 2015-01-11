@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-6">
                 <fieldset>
-                    <legend>Traveler info</legend>
+                    <legend>Traveler data</legend>
 
                     <div class="form-group">
                         <spring:label path="firstName" cssClass="col-md-3 control-label">First name</spring:label>
@@ -63,9 +63,7 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
 
-            <div class="col-md-6">
                 <fieldset>
                     <legend>Payment info</legend>
 
@@ -120,9 +118,62 @@
                         </div>
                     </div>
                 </fieldset>
+
+                <fieldset>
+                    <legend>Additional services</legend>
+                    <div class="form-group">
+                        <spring:checkbox path="travelingWithBike" value="bike"/> I'm traveling with a bike (+10€)
+                    </div>
+
+                    <div class="form-group">
+                        <spring:checkbox path="travelingWithPet" value="pet"/> I'm traveling with a pet (+50%)
+                    </div>
+
+                    <div class="form-group">
+                        <spring:checkbox path="insurance" value="insurance"/> I would like to obtain additional
+                        insurance for trip.
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <legend>One way seats</legend>
+                        <div id="seat-map-one-way">
+                            <div class="front-indicator">Front</div>
+                        </div>
+                    </div>
+
+                    <c:if test="${not empty returnSchedule}">
+                        <div class="col-sm-6">
+                            <legend>Return seats</legend>
+                            <div id="seat-map-return">
+                                <div class="front-indicator">Front</div>
+                            </div>
+                        </div>
+                    </c:if>
+
+                    <div class="col-sm-6">
+                        <div class="booking-details">
+                            <div id="legend"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
         <button type="submit" class="btn btn-primary center-block">Book your ticket</button>
     </spring:form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        <c:if test="${not empty oneWaySchedule}">
+            initializeOneWaySeatMap(${schedule.bus.type == "SUPRA"});
+        </c:if>
+
+        <c:if test="${not empty returnSchedule}">
+            initializeReturnSeatMap(${schedule.bus.type == "SUPRA"});
+        </c:if>
+    });
+</script>
