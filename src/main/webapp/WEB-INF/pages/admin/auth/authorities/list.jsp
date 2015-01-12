@@ -2,24 +2,25 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="util" %>
+<%@ taglib prefix="i18n" uri="http://www.springframework.org/tags" %>
 
 <div id="page-header">
-    <h3>List authorities</h3>
+    <h3><i18n:message code="admin.nav.authorities.list"/></h3>
 </div>
 
 <div id="page-content">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            List of authorities in the system
+            <i18n:message code="admin.authorities.listSystem"/>
         </div>
 
         <div class="panel-body">
             <table class="table table-bordered table-responsive table-striped">
                 <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th><i18n:message code="admin.authorities.id"/></th>
+                    <th><i18n:message code="admin.authorities.name"/></th>
+                    <th><i18n:message code="admin.authorities.description"/></th>
                 </tr>
                 </thead>
                 <tbody>

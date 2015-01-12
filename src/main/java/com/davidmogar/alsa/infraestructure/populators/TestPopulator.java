@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
@@ -52,28 +54,55 @@ public class TestPopulator {
 
         LOGGER.debug("Added places Oviedo and San Sebastian");
 
-        Route route = Route.getBuilder("Oviedo-Donosti", origin, destination)
+        Route routeOneWay = Route.getBuilder("Oviedo-Donosti", origin, destination)
                 .distance(400L)
                 .build();
 
         routeRepository.deleteAll();
-        route = routeRepository.save(route);
+        routeOneWay = routeRepository.save(routeOneWay);
 
         LOGGER.debug("Added route Oviedo-Donosti");
+
+        Route routeReturn = Route.getBuilder("Donosti-Oviedo", destination, origin)
+                .distance(400L)
+                .build();
+
+        routeReturn = routeRepository.save(routeReturn);
+
+        LOGGER.debug("Added route Donosti-Oviedo");
 
         busRepository.deleteAll();
         Bus bus = busRepository.save(new Bus("54308", new Date(), BusType.NORMAL));
 
         LOGGER.debug("Added bus with license plate 54308");
 
-        Schedule schedule = new Schedule();
-        schedule.setRoute(route);
-        schedule.setBus(bus);
-        schedule.setDate(new Date());
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2015-01-12 15:00:00");
 
-        scheduleRepository.save(schedule);
+            Schedule schedule = new Schedule();
+            schedule.setRoute(routeOneWay);
+            schedule.setBus(bus);
+            schedule.setDate(date);
+            schedule.setHours(5.5);
+            schedule.setPrice(50.5);
 
-        LOGGER.debug("Added schedule for route Oviedo-Donosti");
+            scheduleRepository.save(schedule);
+
+            LOGGER.debug("Added schedule for route Oviedo-Donosti");
+
+            schedule = new Schedule();
+            schedule.setRoute(routeReturn);
+            schedule.setBus(bus);
+            schedule.setDate(date);
+            schedule.setHours(5.5);
+            schedule.setPrice(50.5);
+
+            scheduleRepository.save(schedule);
+
+            LOGGER.debug("Added schedule for route Donosti-Oviedo");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
 }

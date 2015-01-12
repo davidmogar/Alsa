@@ -55,6 +55,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto findByUsername(String username) {
+        UserDto userDto = null;
+        User user = userRepository.findByUsername(username);
+
+        if (user != null) {
+            userDto = new UserDto(user);
+        }
+
+        return userDto;
+    }
+
+    @Override
     public void save(UserDto userDto) {
         Authority authority = authorityRepository.findByName(userDto.getAuthority());
 

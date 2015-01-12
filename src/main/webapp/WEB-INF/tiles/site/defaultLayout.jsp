@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/jquery.seat-charts.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>" type="text/css"/>
+    <link rel="stylesheet" href="<c:url value='/resources/css/print.css'/>" type="text/css" media="print"/>
 
     <script src="<c:url value='/resources/js/jquery-1.11.1.min.js'/>"></script>
     <script src="<c:url value='/resources/js/jquery-ui.min.js'/>"></script>

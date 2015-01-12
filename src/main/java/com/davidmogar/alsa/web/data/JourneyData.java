@@ -1,27 +1,37 @@
 package com.davidmogar.alsa.web.data;
 
+import com.davidmogar.alsa.domain.journey.JourneyType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class JourneyData {
 
     @NotEmpty
-    private String day;
+    private String departureDate;
+
+    private String returnDate;
 
     @NotEmpty
     private String destination;
 
     @NotEmpty
-    private String hour;
-
-    @NotEmpty
     private String origin;
 
-    public String getDay() {
-        return day;
+    private JourneyType journeyType;
+
+    public String getDepartureDate() {
+        return departureDate;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
     }
 
     public String getDestination() {
@@ -32,20 +42,20 @@ public class JourneyData {
         this.destination = destination;
     }
 
-    public String getHour() {
-        return hour;
-    }
-
-    public void setHour(String hour) {
-        this.hour = hour;
-    }
-
     public String getOrigin() {
         return origin;
     }
 
     public void setOrigin(String origin) {
         this.origin = origin;
+    }
+
+    public JourneyType getJourneyType() {
+        return journeyType;
+    }
+
+    public void setJourneyType(JourneyType journeyType) {
+        this.journeyType = journeyType;
     }
 
 }

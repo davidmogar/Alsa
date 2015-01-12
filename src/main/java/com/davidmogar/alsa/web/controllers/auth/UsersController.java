@@ -4,10 +4,14 @@ import com.davidmogar.alsa.dto.auth.AuthorityDto;
 import com.davidmogar.alsa.dto.auth.UserDto;
 import com.davidmogar.alsa.services.auth.AuthorityService;
 import com.davidmogar.alsa.services.auth.UserService;
+import com.davidmogar.alsa.services.journey.ReservationService;
 import com.davidmogar.alsa.web.validation.auth.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -18,32 +22,34 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/users")
 public class UsersController {
 
     @Autowired
     private AuthorityService authorityService;
 
     @Autowired
+    private ReservationService reservationService;
+
+    @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/users/create", method = RequestMethod.GET)
     public String createUser() {
         return "admin.users.create";
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/users/list", method = RequestMethod.GET)
     public ModelAndView listUsers() {
         return listUsers(1);
     }
 
-    @RequestMapping(value = "/list/{pageIndex}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/users/list/{pageIndex}", method = RequestMethod.GET)
     public ModelAndView listUsersPage(@PathVariable int pageIndex) {
         return listUsers(pageIndex);
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveNews(@Valid @ModelAttribute("user") @Validated UserDto userDto, BindingResult bindingResult) {
+    @RequestMapping(value = "/admin/users/save", method = RequestMethod.POST)
+    public String saveUser(@Valid @ModelAttribute("user") @Validated UserDto userDto, BindingResult bindingResult) {
         String view = "admin.users.create";
 
         UserValidator validator = new UserValidator();
@@ -60,6 +66,17 @@ public class UsersController {
         }
 
         return view;
+    }
+
+    @RequestMapping(value = "/users/profile")
+    public String showUserProfile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDto userDto = userService.findByUsername(user.getUsername());
+
+        model.addAttribute("firstName", userDto.getFirstname());
+        model.addAttribute("reservations", reservationService.findByIndentification(userDto.getIdentification()));
+
+        return "site.users.profile";
     }
 
     private ModelAndView listUsers(int pageIndex) {

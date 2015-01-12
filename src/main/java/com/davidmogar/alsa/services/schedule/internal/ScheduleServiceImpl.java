@@ -9,6 +9,7 @@ import com.davidmogar.alsa.dto.bus.mapper.BusMapper;
 import com.davidmogar.alsa.dto.route.RouteDto;
 import com.davidmogar.alsa.dto.route.mapper.RouteMapper;
 import com.davidmogar.alsa.dto.schedule.ScheduleDto;
+import com.davidmogar.alsa.dto.schedule.mapper.ScheduleMapper;
 import com.davidmogar.alsa.persistence.change.DatabaseChangeRepository;
 import com.davidmogar.alsa.persistence.route.PlaceRepository;
 import com.davidmogar.alsa.persistence.route.RouteRepository;
@@ -115,9 +116,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         Place destination = placeRepository.findOne(scheduleDto.getRoute().getDestination().getId());
 
         if (origin != null && destination != null) {
-            scheduleRepository.save(new Schedule(BusMapper.getBus(scheduleDto.getBus()),
-                    RouteMapper.getRoute(scheduleDto.getRoute(), origin, destination),
-                    scheduleDto.getDate()));
+            scheduleRepository.save(ScheduleMapper.getSchedule(scheduleDto, origin, destination));
         }
 
         databaseChangeRepository.save(new DatabaseChange("Created schedule with date " + scheduleDto.getDate()));

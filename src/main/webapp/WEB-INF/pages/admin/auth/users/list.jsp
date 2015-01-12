@@ -2,25 +2,26 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="util" %>
+<%@ taglib prefix="i18n" uri="http://www.springframework.org/tags" %>
 
 <div id="page-header">
-    <h3>List users</h3>
+    <h3><i18n:message code="admin.users.list"/></h3>
 </div>
 
 <div id="page-content">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            List of users in the system
+            <i18n:message code="admin.users.listSystem"/>
         </div>
 
         <div class="panel-body">
             <table class="table table-bordered table-responsive table-striped">
                 <thead>
                 <tr>
-                    <th>Username</th>
-                    <th>Passwrod</th>
-                    <th>Authority</th>
-                    <th>Enabled</th>
+                    <th><i18n:message code="admin.users.username"/></th>
+                    <th><i18n:message code="admin.users.password"/></th>
+                    <th><i18n:message code="admin.users.authority"/></th>
+                    <th><i18n:message code="admin.users.enabled"/></th>
                 </tr>
                 </thead>
                 <tbody>

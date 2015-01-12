@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="i18n" uri="http://www.springframework.org/tags" %>
 
 <div id="hero" class="carousel slide">
     <!-- Indicators -->
@@ -26,7 +27,7 @@
 </div>
 
 <div id="news" class="container">
-    <h3>Last news</h3>
+    <h3><i18n:message code="site.home.news"/></h3>
 
     <c:forEach items="${news}" var="news">
         <div class="news-item">
@@ -40,7 +41,7 @@
 
 <div id="about-us">
     <div class="container">
-        <p>Take a tour to find out more about us.</p>
-        <a class="btn btn-default" href="#">Start tour</a>
+        <p><i18n:message code="site.home.tour"/></p>
+        <a class="btn btn-default" href="#"><i18n:message code="site.home.startTour"/></a>
     </div>
 </div>

@@ -36,6 +36,7 @@ public class AuthPopulator {
                 .firstname("John")
                 .lastname("Doe")
                 .email("john.doe@gmail.com")
+                .identification("71664722B")
                 .authority(adminAuthority)
                 .build());
 

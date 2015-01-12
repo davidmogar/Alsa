@@ -28,6 +28,9 @@ public class UserDto {
     private String repeatedPassword;
 
     @NotNull
+    private String identification;
+
+    @NotNull
     private String authority;
 
     private boolean enabled;
@@ -43,6 +46,7 @@ public class UserDto {
             email = user.getEmail();
             username = user.getUsername();
             password = user.getPassword();
+            identification = user.getIdentification();
 
             Authority authorityObject = user.getAuthority();
 
@@ -100,6 +104,14 @@ public class UserDto {
 
     public void setRepeatedPassword(String repeatedPassword) {
         this.repeatedPassword = repeatedPassword;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 
     public String getAuthority() {

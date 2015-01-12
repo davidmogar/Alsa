@@ -24,6 +24,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false, unique = true)
+    private String identification;
+
     private boolean enabled;
 
     @ManyToOne
@@ -82,6 +85,14 @@ public class User {
         this.password = password;
     }
 
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -122,6 +133,12 @@ public class User {
 
         public Builder email(String email) {
             built.email = email;
+
+            return this;
+        }
+
+        public Builder identification(String identification) {
+            built.identification = identification;
 
             return this;
         }

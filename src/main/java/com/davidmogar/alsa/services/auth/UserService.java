@@ -1,5 +1,6 @@
 package com.davidmogar.alsa.services.auth;
 
+import com.davidmogar.alsa.domain.auth.User;
 import com.davidmogar.alsa.dto.auth.UserDto;
 import org.springframework.data.domain.Page;
 
@@ -12,6 +13,8 @@ public interface UserService {
     List<UserDto> findAll();
 
     Page<UserDto> findAll(int page);
+
+    UserDto findByUsername(String username);
 
     void save(UserDto userDto);
 }

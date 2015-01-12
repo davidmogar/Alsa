@@ -41,10 +41,14 @@ $(document).ready(function () {
     })
 
     /* Enable datepickers and set date */
-    $('#datepicker').datepicker();
+    $('.datepicker').datepicker();
 
     var date = new Date();
-    $("#datepicker").val(getCurrentDate());
+    $('.datepicker').val(getCurrentDate());
+
+    $('input[name=journeyType]:radio').change(function () {
+        $('#returnDate').prop('disabled', !$('#returnRadio').is(':checked'))
+    });
 
     setPlacesAutocomplete($('#origin'));
     setPlacesAutocomplete($('#destination'));
@@ -52,7 +56,7 @@ $(document).ready(function () {
     /* Enable sortable tables */
     $("#schedulesTable").tablesorter({selectorHeaders: 'thead th.sortable'});
 
-    $("#scheduleSelectionButton").click(function() {
+    $("#scheduleSelectionButton").click(function () {
         var oneWaySchedule = $('input[name=oneWaySchedule]:checked', '#oneWaySchedulesTable').val();
         var returnSchedule = $('input[name=returnSchedule]:checked', '#returnSchedulesTable').val();
 
@@ -62,9 +66,18 @@ $(document).ready(function () {
             location.replace(ctx + "/journey/book?oneWayId=" + oneWaySchedule);
         }
     });
+
+    $("#book-form form").submit(function (event) {
+        if (seatChartOneWay.find('selected').length <= 0 || (seatChartReturn != null && seatChartReturn.find('selected').length <= 0)) {
+            $("#seatErrorModal").modal('show');
+            event.preventDefault();
+        }
+    })
 });
 
-function initializeOneWaySeatMap(supra) {
+function initializeOneWaySeatMap(supra, reservedSeats) {
+    var seatLabel = 1;
+
     seatChartOneWay = $('#seat-map-one-way').seatCharts({
         legend: {
             node: $('#legend'),
@@ -74,18 +87,32 @@ function initializeOneWaySeatMap(supra) {
                 ['a', 'unavailable', 'Already Booked']
             ]
         },
-        map: supra? supra_map : normal_map,
-        naming: {top: false},
-        seats: {
-            a: {
-                price: 99.99
+        map: supra ? supra_map : normal_map,
+        naming: {
+            top: false,
+            getLabel: function (character, row, column) {
+                return seatLabel++;
             }
-
         },
         click: function () {
             if (this.status() == 'available') {
+                var seat = this.settings.id;
+
+                $("input#oneWaySeats").val(function (i, val) {
+                    return val + (!val ? '' : ', ') + seat;
+                });
+
                 return 'selected';
             } else if (this.status() == 'selected') {
+                var seat = this.settings.id;
+
+                $("input#oneWaySeats").val(function (i, val) {
+                    var seats = val.split(", ");
+                    seats.splice($.inArray(seat, seats), 1);
+
+                    return seats.join(", ");
+                });
+
                 return 'available';
             } else if (this.status() == 'unavailable') {
                 return 'unavailable';
@@ -94,22 +121,40 @@ function initializeOneWaySeatMap(supra) {
             }
         }
     });
+
+    seatChartOneWay.get(reservedSeats.split(", ")).status('unavailable');
 }
 
-function initializeReturnSeatMap(supra) {
-    seatChartReturn = $('#seat-map-return').seatCharts({
-        map: supra? supra_map : normal_map,
-        naming: {top: false},
-        seats: {
-            a: {
-                price: 99.99
-            }
+function initializeReturnSeatMap(supra, reservedSeats) {
+    var seatLabel = 1;
 
+    seatChartReturn = $('#seat-map-return').seatCharts({
+        map: supra ? supra_map : normal_map,
+        naming: {
+            top: false,
+            getLabel: function (character, row, column) {
+                return seatLabel++;
+            }
         },
         click: function () {
             if (this.status() == 'available') {
+                var seat = this.settings.id;
+
+                $("input#returnSeats").val(function (i, val) {
+                    return val + (!val ? '' : ', ') + seat;
+                });
+
                 return 'selected';
             } else if (this.status() == 'selected') {
+                var seat = this.settings.id;
+
+                $("input#returnSeats").val(function (i, val) {
+                    var seats = val.split(", ");
+                    seats.splice($.inArray(seat, seats), 1);
+
+                    return seats.join(", ");
+                });
+
                 return 'available';
             } else if (this.status() == 'unavailable') {
                 return 'unavailable';
@@ -118,6 +163,8 @@ function initializeReturnSeatMap(supra) {
             }
         }
     });
+
+    seatChartReturn.get(reservedSeats.split(", ")).status('unavailable');
 }
 
 function getCurrentDate() {

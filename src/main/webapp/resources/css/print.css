@@ -1,0 +1,6 @@
+header #quick-bar, footer, .btn {
+    display: none;
+}
+
+/* hide visible URL after links. */
+a[href]:after { content: ""; }

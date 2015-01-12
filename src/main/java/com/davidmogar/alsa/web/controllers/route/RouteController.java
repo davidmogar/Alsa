@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("admin/routes")
-public class RoutesController {
+public class RouteController {
 
     @Autowired
     private RouteService routeService;
@@ -59,7 +59,7 @@ public class RoutesController {
         return modelAndView;
     }
 
-    @ModelAttribute("route")
+    @ModelAttribute("oneWayRoute")
     private RouteDto routeDto() {
         return new RouteDto();
     }
