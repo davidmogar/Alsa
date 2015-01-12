@@ -1,7 +1,7 @@
 package com.davidmogar.alsa.web.controllers.news;
 
 import com.davidmogar.alsa.dto.news.NewsDto;
-import com.davidmogar.alsa.services.news.NewsService;
+import com.davidmogar.alsa.services.news.NewsManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import javax.validation.Valid;
 public class NewsController {
 
     @Autowired
-    private NewsService newsService;
+    private NewsManagerService newsManagerService;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createNews(Model model) {
@@ -44,7 +44,7 @@ public class NewsController {
         String view = "admin.news.create";
 
         if (!bindingResult.hasErrors()) {
-            newsService.save(newsDto);
+            newsManagerService.save(newsDto);
 
             view = "redirect:/admin/news/list";
         }
@@ -55,7 +55,7 @@ public class NewsController {
     private ModelAndView listNews(int pageIndex) {
         ModelAndView modelAndView = new ModelAndView("admin.news.list");
 
-        Page<NewsDto> page = newsService.findAll(pageIndex);
+        Page<NewsDto> page = newsManagerService.findAll(pageIndex);
         modelAndView.addObject("news", page.getContent()); /* TODO: Paginate */
 
         return modelAndView;

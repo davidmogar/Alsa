@@ -15,9 +15,10 @@ public class Route {
     @Column(nullable = false)
     private Long distance;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String name;
 
+    @Column(length = 254)
     private String description;
 
     @ManyToOne

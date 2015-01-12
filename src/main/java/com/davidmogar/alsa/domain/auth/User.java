@@ -2,6 +2,9 @@ package com.davidmogar.alsa.domain.auth;
 
 import javax.persistence.*;
 
+/**
+ * User data.
+ */
 @Entity
 public class User {
 

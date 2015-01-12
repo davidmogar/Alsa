@@ -73,6 +73,10 @@ $(document).ready(function () {
             event.preventDefault();
         }
     })
+
+    $("#sendEmail").click(function() {
+        $("#emailModal").modal('show');
+    });
 });
 
 function initializeOneWaySeatMap(supra, reservedSeats) {

@@ -1,7 +1,7 @@
 package com.davidmogar.alsa.web.controllers.journey;
 
 import com.davidmogar.alsa.dto.journey.ReservationDto;
-import com.davidmogar.alsa.services.journey.ReservationService;
+import com.davidmogar.alsa.services.journey.ReservationManagerService;
 import com.davidmogar.alsa.web.data.TicketData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class TicketController {
 
     @Autowired
-    private ReservationService reservationService;
+    private ReservationManagerService reservationManagerService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String showTicketsHome() {
@@ -30,7 +30,7 @@ public class TicketController {
         String view = "site.tickets";
 
         if (!bindingResult.hasErrors()) {
-            model.addAttribute("reservation", reservationService.findByCode(ticketData.getCode()));
+            model.addAttribute("reservation", reservationManagerService.findByCode(ticketData.getCode()));
 
             view = "site.tickets.info";
         }
@@ -43,12 +43,12 @@ public class TicketController {
         String view = "site.tickets";
 
         if (!bindingResult.hasErrors()) {
-            ReservationDto reservationDto = reservationService.findByCodeAndIndentification(ticketData.getCode(),
+            ReservationDto reservationDto = reservationManagerService.findByCodeAndIndentification(ticketData.getCode(),
                     ticketData.getIdentification());
             model.addAttribute("reservation", reservationDto);
 
             if (reservationDto != null) {
-                reservationService.delete(reservationDto.getId());
+                reservationManagerService.delete(reservationDto.getId());
 
                 view = "site.tickets.cancel";
             } else {

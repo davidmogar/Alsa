@@ -1,6 +1,7 @@
 package com.davidmogar.alsa.dto.news;
 
 import com.davidmogar.alsa.domain.news.News;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,6 +17,8 @@ public class NewsDto {
     @Size(min = 200, max = 1000)
     private String text;
 
+    @NotNull
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date publicationDate;
 
     public NewsDto() {

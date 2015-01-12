@@ -2,16 +2,24 @@ package com.davidmogar.alsa.dto.bus;
 
 import com.davidmogar.alsa.domain.bus.Bus;
 import com.davidmogar.alsa.domain.bus.BusType;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class BusDto {
 
+    @NotEmpty
+    @Size(min = 5, max = 10)
     private String licensePlate;
 
+    @NotNull
     @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date lastRevision;
+
+    @NotNull
     private BusType type;
 
     public BusDto() {

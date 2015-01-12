@@ -3,6 +3,9 @@ package com.davidmogar.alsa.domain.auth;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Store application roles.
+ */
 @Entity
 public class Authority {
 

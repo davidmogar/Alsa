@@ -2,12 +2,11 @@ package com.davidmogar.alsa.web.controllers.place;
 
 import com.davidmogar.alsa.dto.route.PlaceDto;
 import com.davidmogar.alsa.infraestructure.utils.MultipartFileUploader;
-import com.davidmogar.alsa.services.route.PlaceService;
-import jdk.nashorn.internal.ir.RuntimeNode;
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
+import com.davidmogar.alsa.services.route.PlaceManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +22,7 @@ public class PlaceController {
     private static final String IMAGES_STORAGE_PATH = "/resources/places/";
 
     @Autowired
-    private PlaceService placeService;
+    private PlaceManagerService placeManagerService;
 
     @RequestMapping(value = "/admin/places/create", method = RequestMethod.GET)
     public String createUser() {
@@ -54,7 +53,7 @@ public class PlaceController {
                 }
             }
 
-            placeService.save(placeDto);
+            placeManagerService.save(placeDto);
 
             view = "redirect:/admin/places/list";
         }
@@ -66,13 +65,13 @@ public class PlaceController {
     public
     @ResponseBody
     List<PlaceDto> getPlaces(@RequestParam("term") String term) {
-        return placeService.findByNameLike(term);
+        return placeManagerService.findByNameLike(term);
     }
 
     private ModelAndView listPlaces(int pageIndex) {
         ModelAndView modelAndView = new ModelAndView("admin.places.list");
 
-        Page<PlaceDto> page = placeService.findAll(pageIndex);
+        Page<PlaceDto> page = placeManagerService.findAll(pageIndex);
         modelAndView.addObject("places", page.getContent()); /* TODO: Paginate */
 
         return modelAndView;

@@ -1,12 +1,15 @@
 package com.davidmogar.alsa.web.controllers.schedules;
 
 import com.davidmogar.alsa.dto.schedule.ScheduleDto;
-import com.davidmogar.alsa.services.schedule.ScheduleService;
+import com.davidmogar.alsa.services.bus.BusManagerService;
+import com.davidmogar.alsa.services.route.RouteManagerService;
+import com.davidmogar.alsa.services.schedule.ScheduleManagerService;
+import com.davidmogar.alsa.web.validation.schedule.ScheduleValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +23,16 @@ import javax.validation.Valid;
 public class ScheduleController {
 
     @Autowired
-    private ScheduleService scheduleService;
+    private BusManagerService busManagerService;
+
+    @Autowired
+    private RouteManagerService routeManagerService;
+
+    @Autowired
+    private ScheduleManagerService scheduleManagerService;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createSchedule(Model model) {
+    public String createSchedule() {
         return "admin.schedules.create";
     }
 
@@ -38,11 +47,15 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveNews(@Valid @ModelAttribute("schedule") ScheduleDto scheduleDto, BindingResult bindingResult) {
+    public String saveNews(@Valid @ModelAttribute("schedule") @Validated ScheduleDto scheduleDto, BindingResult
+            bindingResult) {
         String view = "admin.schedules.create";
 
+        ScheduleValidator scheduleValidator = new ScheduleValidator(busManagerService, routeManagerService);
+        scheduleValidator.validate(scheduleDto, bindingResult);
+
         if (!bindingResult.hasErrors()) {
-            scheduleService.save(scheduleDto);
+            scheduleManagerService.save(scheduleDto);
 
             view = "redirect:/admin/schedules/list";
         }
@@ -53,13 +66,13 @@ public class ScheduleController {
     private ModelAndView listSchedules(int pageIndex) {
         ModelAndView modelAndView = new ModelAndView("admin.schedules.list");
 
-        Page<ScheduleDto> page = scheduleService.findAll(pageIndex);
+        Page<ScheduleDto> page = scheduleManagerService.findAll(pageIndex);
         modelAndView.addObject("schedules", page.getContent()); /* TODO: Paginate */
 
         return modelAndView;
     }
 
-    @ModelAttribute("oneWaySchedule")
+    @ModelAttribute("schedule")
     private ScheduleDto scheduleDto() {
         return new ScheduleDto();
     }

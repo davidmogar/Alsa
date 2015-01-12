@@ -4,15 +4,23 @@ import com.davidmogar.alsa.domain.bus.IdentificationType;
 import com.davidmogar.alsa.dto.journey.ReservationDto;
 import com.davidmogar.alsa.dto.schedule.ScheduleDto;
 import com.davidmogar.alsa.infraestructure.utils.NumberUtils;
-import com.davidmogar.alsa.services.journey.ReservationService;
-import com.davidmogar.alsa.services.schedule.ScheduleService;
+import com.davidmogar.alsa.services.journey.ReservationManagerService;
+import com.davidmogar.alsa.services.schedule.ScheduleManagerService;
+import com.davidmogar.alsa.web.data.EmailData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
@@ -24,34 +32,37 @@ import java.util.Optional;
 public class BookController {
 
     @Autowired
-    private ReservationService reservationService;
+    private JavaMailSender javaMailSender;
 
     @Autowired
-    private ScheduleService scheduleService;
+    private ReservationManagerService reservationManagerService;
+
+    @Autowired
+    private ScheduleManagerService scheduleManagerService;
 
     @RequestMapping(value = "book", method = RequestMethod.GET)
     public String showBookHome(@RequestParam Long oneWayId, @RequestParam(required = false) Optional<Long> returnId,
                                @ModelAttribute("reservation") ReservationDto reservationDto, Model model) {
-        ScheduleDto oneWaySchedule = scheduleService.findOne(oneWayId);
+        ScheduleDto oneWaySchedule = scheduleManagerService.findOne(oneWayId);
 
         if (oneWaySchedule != null) {
             reservationDto.setOneWayScheduleDto(oneWaySchedule);
 
-            List<ReservationDto> oneWayReservations = reservationService.findByOneWayScheduleId(oneWaySchedule.getId());
-            List<ReservationDto> returnReservations = reservationService.findByReturnScheduleId(oneWaySchedule.getId());
+            List<ReservationDto> oneWayReservations = reservationManagerService.findByOneWayScheduleId(oneWaySchedule.getId());
+            List<ReservationDto> returnReservations = reservationManagerService.findByReturnScheduleId(oneWaySchedule.getId());
 
             model.addAttribute("oneWaySeats", getReservedSeats(oneWayReservations, returnReservations));
             model.addAttribute("identificationTypes", IdentificationType.values());
             model.addAttribute("oneWaySchedule", oneWaySchedule);
 
             if (returnId.isPresent()) {
-                ScheduleDto returnSchedule = scheduleService.findOne(returnId.get());
+                ScheduleDto returnSchedule = scheduleManagerService.findOne(returnId.get());
 
                 if (returnSchedule != null) {
                     reservationDto.setReturnScheduleDto(returnSchedule);
 
-                    oneWayReservations = reservationService.findByOneWayScheduleId(returnSchedule.getId());
-                    returnReservations = reservationService.findByReturnScheduleId(returnSchedule.getId());
+                    oneWayReservations = reservationManagerService.findByOneWayScheduleId(returnSchedule.getId());
+                    returnReservations = reservationManagerService.findByReturnScheduleId(returnSchedule.getId());
 
                     model.addAttribute("returnSeats", getReservedSeats(oneWayReservations, returnReservations));
                     model.addAttribute("returnSchedule", returnSchedule);
@@ -71,8 +82,8 @@ public class BookController {
 
     @RequestMapping(value = "book/confirm", method = RequestMethod.GET)
     public String saveReservation(@ModelAttribute("reservation") ReservationDto reservationDto, Model model,
-              HttpSession session) {
-        reservationService.save(reservationDto);
+                                  HttpSession session) {
+        reservationManagerService.save(reservationDto);
         calculatePrices(reservationDto, model);
 
         session.removeAttribute("reservation");
@@ -80,14 +91,41 @@ public class BookController {
         return "site.journey.book.thanks";
     }
 
+    @RequestMapping(value = "book/sendEmail", method = RequestMethod.POST)
+    public String saveReservation(@Valid @ModelAttribute("email") EmailData emailData, BindingResult bindingResult) {
+        String view = "site.journey.book.thanks";
+
+        if (!bindingResult.hasErrors()) {
+            MimeMessagePreparator preparator = mimeMessage -> {
+
+                mimeMessage.setRecipient(Message.RecipientType.TO,
+                        new InternetAddress(emailData.getEmailAddress()));
+                mimeMessage.setFrom(new InternetAddress("alsa@alsa.es"));
+                mimeMessage.setText(emailData.getText());
+            };
+
+            try {
+                javaMailSender.send(preparator);
+
+                view = "site.journey.book.emailConfirmation";
+            } catch (MailException ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+
+        return view;
+    }
+
     @RequestMapping(value = "book/process", method = RequestMethod.POST)
     public String saveReservation(@Valid @ModelAttribute("reservation") @Validated ReservationDto reservationDto,
                                   BindingResult bindingResult) {
         String view = "site.journey.book";
 
+//        ReservationValidator reservationValidator = new ReservationValidator();
+//        reservationValidator.validate(reservationDto, bindingResult);
+
         if (!bindingResult.hasErrors()) {
             view = "redirect:/journey/book/confirmation";
-        } else {
         }
 
         return view;
@@ -109,9 +147,15 @@ public class BookController {
             model.addAttribute("returnSeatsPrice", NumberUtils.round(seatsPrice, 2));
         }
 
-        if (reservationDto.isInsuranceRequested()) { totalPrice += 1; }
-        if (reservationDto.isTravelingWithBike()) { totalPrice += 10; }
-        if (reservationDto.isTravelingWithPet()) { totalPrice *= 1.5; }
+        if (reservationDto.isInsuranceRequested()) {
+            totalPrice += 1;
+        }
+        if (reservationDto.isTravelingWithBike()) {
+            totalPrice += 10;
+        }
+        if (reservationDto.isTravelingWithPet()) {
+            totalPrice *= 1.5;
+        }
 
         reservationDto.setTotalPrice(totalPrice);
 
@@ -119,18 +163,23 @@ public class BookController {
     }
 
     private String getReservedSeats(List<ReservationDto> oneWayReservations,
-            List<ReservationDto> returnReservations) {
+                                    List<ReservationDto> returnReservations) {
         String seats = "";
 
         for (ReservationDto reservation : oneWayReservations) {
-            seats += (seats.isEmpty()? "" : ", ") + reservation.getOneWaySeats();
+            seats += (seats.isEmpty() ? "" : ", ") + reservation.getOneWaySeats();
         }
 
         for (ReservationDto reservation : returnReservations) {
-            seats += (seats.isEmpty()? "" : ", ") + reservation.getReturnSeats();
+            seats += (seats.isEmpty() ? "" : ", ") + reservation.getReturnSeats();
         }
 
         return seats;
+    }
+
+    @ModelAttribute("email")
+    private EmailData emailData() {
+        return new EmailData();
     }
 
     @ModelAttribute("reservation")

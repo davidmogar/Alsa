@@ -15,7 +15,6 @@
                     <i18n:message code="site.nav.journey" /></a></li>
                 <li><a href="${pageContext.request.contextPath}/tickets">
                     <i18n:message code="site.nav.tickets" /></a></li>
-                <li><a href="#"><i18n:message code="site.nav.popular" /></a></li>
                 <li><a href="#"><i18n:message code="site.nav.aboutUs" /></a></li>
                 <li><a href="?locale=en">en</a> | <a href="?locale=es">es</a></li>
             </ul>

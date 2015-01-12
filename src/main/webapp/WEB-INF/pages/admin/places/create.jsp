@@ -23,6 +23,14 @@
                     <spring:errors path="name" cssClass="validation-error"/>
                 </div>
 
+                <div class="form-group">
+                    <spring:label path="description"><i18n:message code="admin.places.description"/></spring:label>
+                    <i18n:message code="admin.places.description.ph" var="descriptionPlaceholder"/>
+                    <spring:textarea path="description" class="form-control" rows="5" placeholder="${descriptionPlaceholder}"
+                                     required="true"/>
+                    <spring:errors path="description" cssClass="validation-error"/>
+                </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

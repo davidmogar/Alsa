@@ -122,6 +122,10 @@
         <put-attribute name="content" value="/WEB-INF/pages/site/book/bookConfirmation.jsp"/>
     </definition>
 
+    <definition name="site.journey.book.emailConfirmation" extends="siteLayout">
+        <put-attribute name="content" value="/WEB-INF/pages/site/book/emailConfirmation.jsp"/>
+    </definition>
+
     <definition name="site.journey.book.thanks" extends="siteLayout">
         <put-attribute name="content" value="/WEB-INF/pages/site/book/thanks.jsp"/>
     </definition>

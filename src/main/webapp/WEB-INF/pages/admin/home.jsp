@@ -93,6 +93,12 @@
         </div>
     </div>
 
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p><i18n:message code="admin.dashboard.sessions" arguments="${sessions}"/></p>
+        </div>
+    </div>
+
     <div class="panel panel-primary">
         <div class="panel-heading">
             <i18n:message code="admin.dashboard.recent"/>

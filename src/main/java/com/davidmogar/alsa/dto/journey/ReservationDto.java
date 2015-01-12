@@ -4,28 +4,47 @@ import com.davidmogar.alsa.domain.bus.IdentificationType;
 import com.davidmogar.alsa.domain.journey.Reservation;
 import com.davidmogar.alsa.domain.schedule.Schedule;
 import com.davidmogar.alsa.dto.schedule.ScheduleDto;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 public class ReservationDto {
 
     private Long id;
 
+    @NotEmpty
+    @Size(max = 25)
     private String firstName;
+
+    @NotEmpty
+    @Size(max = 100)
     private String lastName;
 
+    @NotEmpty
     private String code = UUID.randomUUID().toString();
 
+    @NotEmpty
     private String identification;
+
+    @NotNull
     private IdentificationType identificationType;
 
     private String oneWaySeats;
     private String returnSeats;
 
+    @NotEmpty
     private String cardHoldersName;
+
+    @NotEmpty
     private String cardNumber;
     private int cardCsv;
+
+    @NotNull
     private int cardExpirationMonth;
+
+    @NotNull
     private int cardExpirationYear;
 
     private boolean insuranceRequested;

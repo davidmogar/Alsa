@@ -39,7 +39,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <spring:label path="lastRevision"><i18n:message code="admin.buses.lastRevision"/></spring:label>
-                            <spring:input path="lastRevision" class="form-control" type="text" placeholder="mm/dd/yyyy"
+                            <spring:input path="lastRevision" class="form-control" type="text" placeholder="MM/dd/yyyy"
                                           required="true"/>
                             <spring:errors path="lastRevision" cssClass="validation-error"/>
                         </div>

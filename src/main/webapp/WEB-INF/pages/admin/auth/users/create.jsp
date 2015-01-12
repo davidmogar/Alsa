@@ -71,7 +71,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <spring:label path="identification"><i18n:message code="admin.users.identification"/>s
+                            <spring:label path="identification"><i18n:message code="admin.users.identification"/>
                             </spring:label>
                             <i18n:message code="admin.users.identification.ph" var="identificationlaceholder"/>
                             <spring:input path="identification" class="form-control" type="text" placeholder="${identificationlaceholder}"

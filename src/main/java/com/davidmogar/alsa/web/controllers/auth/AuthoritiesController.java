@@ -1,7 +1,7 @@
 package com.davidmogar.alsa.web.controllers.auth;
 
 import com.davidmogar.alsa.dto.auth.AuthorityDto;
-import com.davidmogar.alsa.services.auth.AuthorityService;
+import com.davidmogar.alsa.services.auth.AuthorityManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ import javax.validation.Valid;
 public class AuthoritiesController {
 
     @Autowired
-    private AuthorityService authorityService;
+    private AuthorityManagerService authorityManagerService;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createAuthority() {
@@ -26,7 +26,7 @@ public class AuthoritiesController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listAuthorities(Model model) {
-        model.addAttribute("authorities", authorityService.findAll());
+        model.addAttribute("authorities", authorityManagerService.findAll());
 
         return "admin.authorities.list";
     }
@@ -36,7 +36,7 @@ public class AuthoritiesController {
         String view = "admin.authorities.create";
 
         if (!bindingResult.hasErrors()) {
-            authorityService.save(authorityDto);
+            authorityManagerService.save(authorityDto);
 
             view = "redirect:/admin/authorities/list";
         }

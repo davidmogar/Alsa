@@ -2,15 +2,16 @@ package com.davidmogar.alsa.web.controllers.journey;
 
 import com.davidmogar.alsa.domain.journey.JourneyType;
 import com.davidmogar.alsa.dto.route.RouteDto;
-import com.davidmogar.alsa.services.route.PlaceService;
-import com.davidmogar.alsa.services.route.RouteService;
-import com.davidmogar.alsa.services.schedule.ScheduleService;
+import com.davidmogar.alsa.services.route.PlaceManagerService;
+import com.davidmogar.alsa.services.route.RouteManagerService;
+import com.davidmogar.alsa.services.schedule.ScheduleManagerService;
 import com.davidmogar.alsa.web.data.JourneyData;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,13 +30,13 @@ import java.util.Date;
 public class JourneyController {
 
     @Autowired
-    private PlaceService placeService;
+    private PlaceManagerService placeManagerService;
 
     @Autowired
-    private RouteService routeService;
+    private RouteManagerService routeManagerService;
 
     @Autowired
-    private ScheduleService scheduleService;
+    private ScheduleManagerService scheduleManagerService;
 
     @InitBinder
     protected void initBinder(ServletRequestDataBinder dataBinder) {
@@ -59,14 +60,16 @@ public class JourneyController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showJourneyHome(HttpSession session) {
+    public String showJourneyHome(HttpSession session, Model model) {
         session.removeAttribute("reservation");
+
+        model.addAttribute("popularPlaces", placeManagerService.findTop3Places());
 
         return "site.journey";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.POST)
-    public String showSchedules(@Valid @ModelAttribute("journeyData") JourneyData journeyData,
+    public String showSchedules(@Valid @ModelAttribute("journeyData") @Validated JourneyData journeyData,
                                 BindingResult bindingResult, Model model) {
         String view = "site.journey";
 
@@ -76,11 +79,11 @@ public class JourneyController {
                 Date date = simpleDateFormat.parse(journeyData.getDepartureDate());
                 date.setTime((new Date()).getTime());
 
-                RouteDto routeDto = routeService.findOne(journeyData.getOrigin(), journeyData.getDestination());
+                RouteDto routeDto = routeManagerService.findOne(journeyData.getOrigin(), journeyData.getDestination());
 
                 if (routeDto != null) {
                     model.addAttribute("oneWayRoute", routeDto);
-                    model.addAttribute("oneWaySchedules", scheduleService.findAll(routeDto, date));
+                    model.addAttribute("oneWaySchedules", scheduleManagerService.findAll(routeDto, date));
                 }
 
                 if (journeyData.getJourneyType() == JourneyType.RETURN && journeyData.getReturnDate() != null) {
@@ -89,11 +92,11 @@ public class JourneyController {
                         date.setTime((new Date()).getTime());
                     }
 
-                    routeDto = routeService.findOne(journeyData.getDestination(), journeyData.getOrigin());
+                    routeDto = routeManagerService.findOne(journeyData.getDestination(), journeyData.getOrigin());
 
                     if (routeDto != null) {
                         model.addAttribute("returnRoute", routeDto);
-                        model.addAttribute("returnSchedules", scheduleService.findAll(routeDto, date));
+                        model.addAttribute("returnSchedules", scheduleManagerService.findAll(routeDto, date));
                     }
                 }
 

@@ -2,9 +2,10 @@ package com.davidmogar.alsa.web.controllers.auth;
 
 import com.davidmogar.alsa.dto.auth.AuthorityDto;
 import com.davidmogar.alsa.dto.auth.UserDto;
-import com.davidmogar.alsa.services.auth.AuthorityService;
-import com.davidmogar.alsa.services.auth.UserService;
-import com.davidmogar.alsa.services.journey.ReservationService;
+import com.davidmogar.alsa.persistence.journey.repository.ReservationRepository;
+import com.davidmogar.alsa.services.auth.AuthorityManagerService;
+import com.davidmogar.alsa.services.auth.UserManagerService;
+import com.davidmogar.alsa.services.journey.ReservationManagerService;
 import com.davidmogar.alsa.web.validation.auth.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,13 +26,13 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
-    private AuthorityService authorityService;
+    private AuthorityManagerService authorityManagerService;
 
     @Autowired
-    private ReservationService reservationService;
+    private ReservationManagerService reservationManagerService;
 
     @Autowired
-    private UserService userService;
+    private UserManagerService userManagerService;
 
     @RequestMapping(value = "/admin/users/create", method = RequestMethod.GET)
     public String createUser() {
@@ -56,7 +57,7 @@ public class UsersController {
         validator.validate(userDto, bindingResult);
 
         if (!bindingResult.hasErrors()) {
-            userService.save(userDto);
+            userManagerService.save(userDto);
 
             view = "redirect:/admin/users/list";
         } else {
@@ -71,10 +72,10 @@ public class UsersController {
     @RequestMapping(value = "/users/profile")
     public String showUserProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDto userDto = userService.findByUsername(user.getUsername());
+        UserDto userDto = userManagerService.findByUsername(user.getUsername());
 
         model.addAttribute("firstName", userDto.getFirstname());
-        model.addAttribute("reservations", reservationService.findByIndentification(userDto.getIdentification()));
+        model.addAttribute("reservations", reservationManagerService.findByIndentification(userDto.getIdentification()));
 
         return "site.users.profile";
     }
@@ -82,7 +83,7 @@ public class UsersController {
     private ModelAndView listUsers(int pageIndex) {
         ModelAndView modelAndView = new ModelAndView("admin.users.list");
 
-        Page page = userService.findAll(pageIndex);
+        Page page = userManagerService.findAll(pageIndex);
         modelAndView.addObject("page", page);
 
         return modelAndView;
@@ -90,7 +91,7 @@ public class UsersController {
 
     @ModelAttribute("authorities")
     private List<AuthorityDto> authorities() {
-        return authorityService.findAll();
+        return authorityManagerService.findAll();
     }
 
     @ModelAttribute("user")

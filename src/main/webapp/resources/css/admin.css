@@ -8,6 +8,33 @@ body {
     line-height: 1.6;
 }
 
+/* Autocomplete */
+.ui-autocomplete {
+    max-height: 10em;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+* html .ui-autocomplete {
+    height: 10em;
+}
+
+.ui-menu-item a {
+    font-family: 'Raleway', sans-serif;
+}
+
+.ui-menu-item.ui-state-focus, .ui-menu-item:hover {
+    background: #0866c6;
+    border: 1px solid #0866c6;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+.ui-menu-item.ui-state-focus a, .ui-menu-item:hover a {
+    color: white;
+}
+
 /* Common */
 
 .btn-primary, .btn-primary:focus, .btn-primary:hover {

@@ -16,8 +16,10 @@ public class Reservation {
     @Column(nullable = false, unique = true)
     private String code = UUID.randomUUID().toString();
 
-    @Column(nullable = false, length = 254)
+    @Column(nullable = false, length = 25)
     private String firstName;
+
+    @Column(nullable = false, length = 100)
     private String lastName;
 
     private String identification;

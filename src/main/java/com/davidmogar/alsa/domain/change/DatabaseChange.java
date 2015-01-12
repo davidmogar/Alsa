@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * Store changes in the database derived from insertions.
+ */
 @Entity
 public class DatabaseChange {
 

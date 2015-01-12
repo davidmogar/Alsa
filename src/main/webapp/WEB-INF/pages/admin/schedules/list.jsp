@@ -19,6 +19,7 @@
                 <tr>
                     <th><i18n:message code="admin.schedules.route"/></th>
                     <th><i18n:message code="admin.schedules.bus"/></th>
+                    <th><i18n:message code="admin.schedules.date"/></th>
                     <th><i18n:message code="admin.schedules.hours"/></th>
                     <th><i18n:message code="admin.schedules.price"/></th>
                 </tr>
@@ -28,6 +29,7 @@
                     <tr>
                         <td>${schedule.route.name}</td>
                         <td>${schedule.bus.licensePlate}</td>
+                        <td>${schedule.date}</td>
                         <td>${schedule.hours}</td>
                         <td>${schedule.price}</td>
                     </tr>

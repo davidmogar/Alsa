@@ -32,35 +32,38 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <spring:label path="origin"><i18n:message code="admin.routes.origin"/></spring:label>
+                            <spring:label path="originName"><i18n:message code="admin.routes.origin"/></spring:label>
                             <i18n:message code="admin.routes.origin.ph" var="originPlaceholder"/>
-                            <spring:input path="origin" class="form-control" Type="text"
+                            <spring:input id="origin" path="originName" class="form-control" Type="text"
                                           placeholder="${originPlaceholder}"
                                           required="true"/>
-                            <spring:errors path="origin" cssClass="validation-error"/>
+                            <spring:errors path="originName" cssClass="validation-error"/>
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <spring:label path="destination"><i18n:message code="admin.routes.destination"/></spring:label>
+                            <spring:label path="destinationName"><i18n:message
+                                    code="admin.routes.destination"/></spring:label>
                             <i18n:message code="admin.routes.destination.ph" var="destinationPlaceholder"/>
-                            <spring:input path="destination" class="form-control" Type="text"
+                            <spring:input id="destination" path="destinationName" class="form-control" Type="text"
                                           placeholder="${destinationPlaceholder}"
                                           required="true"/>
-                            <spring:errors path="destination" cssClass="validation-error"/>
+                            <spring:errors path="destinationName" cssClass="validation-error"/>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <spring:label path="distance"><i18n:message code="admin.routes.distance"/></spring:label>
-                    <i18n:message code="admin.routes.distance.ph" var="distancePlaceholder"/>
-                    <spring:input path="distance" class="form-control" Type="text" placeholder="${distancePlaceholder}"
-                                  required="true"/>
-                    <spring:errors path="distance" cssClass="validation-error"/>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <spring:label path="distance"><i18n:message code="admin.routes.distance"/></spring:label>
+                            <i18n:message code="admin.routes.distance.ph" var="distancePlaceholder"/>
+                            <spring:input path="distance" class="form-control" Type="text" placeholder="${distancePlaceholder}"
+                                          required="true"/>
+                            <spring:errors path="distance" cssClass="validation-error"/>
+                        </div>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary"><i18n:message code="admin.submit"/></button>

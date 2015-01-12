@@ -5,10 +5,10 @@ import com.davidmogar.alsa.domain.bus.BusType;
 import com.davidmogar.alsa.domain.route.Place;
 import com.davidmogar.alsa.domain.route.Route;
 import com.davidmogar.alsa.domain.schedule.Schedule;
-import com.davidmogar.alsa.persistence.bus.BusRepository;
-import com.davidmogar.alsa.persistence.route.PlaceRepository;
-import com.davidmogar.alsa.persistence.route.RouteRepository;
-import com.davidmogar.alsa.persistence.schedule.ScheduleRepository;
+import com.davidmogar.alsa.persistence.bus.BusDataService;
+import com.davidmogar.alsa.persistence.route.PlaceDataService;
+import com.davidmogar.alsa.persistence.route.RouteDataService;
+import com.davidmogar.alsa.persistence.schedule.ScheduleDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +25,16 @@ public class TestPopulator {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestPopulator.class);
 
     @Autowired
-    private BusRepository busRepository;
+    private BusDataService busDataService;
 
     @Autowired
-    private PlaceRepository placeRepository;
+    private PlaceDataService placeDataService;
 
     @Autowired
-    private RouteRepository routeRepository;
+    private RouteDataService routeDataService;
 
     @Autowired
-    private ScheduleRepository scheduleRepository;
+    private ScheduleDataService scheduleDataService;
 
     @PostConstruct
     private void populate() {
@@ -42,15 +42,17 @@ public class TestPopulator {
         origin.setName("Oviedo");
         origin.setLatitude(1L);
         origin.setLongitude(2L);
+        origin.setDescription("bajkl bajjklb jfsdjhga jklbaj bajkl bajkl bajjjds bajlba jbal baj");
 
         Place destination = new Place();
         destination.setName("San Sebastian");
         destination.setLatitude(1L);
         destination.setLongitude(2L);
+        destination.setDescription("bajkl bajjklb jfsdjhga jklbaj bajkl bajkl bajjjds bajlba jbal baj");
 
-        placeRepository.deleteAll();
-        placeRepository.save(origin);
-        placeRepository.save(destination);
+        placeDataService.deleteAll();
+        placeDataService.save(origin);
+        placeDataService.save(destination);
 
         LOGGER.debug("Added places Oviedo and San Sebastian");
 
@@ -58,8 +60,8 @@ public class TestPopulator {
                 .distance(400L)
                 .build();
 
-        routeRepository.deleteAll();
-        routeOneWay = routeRepository.save(routeOneWay);
+        routeDataService.deleteAll();
+        routeOneWay = routeDataService.save(routeOneWay);
 
         LOGGER.debug("Added route Oviedo-Donosti");
 
@@ -67,12 +69,12 @@ public class TestPopulator {
                 .distance(400L)
                 .build();
 
-        routeReturn = routeRepository.save(routeReturn);
+        routeReturn = routeDataService.save(routeReturn);
 
         LOGGER.debug("Added route Donosti-Oviedo");
 
-        busRepository.deleteAll();
-        Bus bus = busRepository.save(new Bus("54308", new Date(), BusType.NORMAL));
+        busDataService.deleteAll();
+        Bus bus = busDataService.save(new Bus("54308", new Date(), BusType.NORMAL));
 
         LOGGER.debug("Added bus with license plate 54308");
 
@@ -86,7 +88,7 @@ public class TestPopulator {
             schedule.setHours(5.5);
             schedule.setPrice(50.5);
 
-            scheduleRepository.save(schedule);
+            scheduleDataService.save(schedule);
 
             LOGGER.debug("Added schedule for route Oviedo-Donosti");
 
@@ -97,7 +99,7 @@ public class TestPopulator {
             schedule.setHours(5.5);
             schedule.setPrice(50.5);
 
-            scheduleRepository.save(schedule);
+            scheduleDataService.save(schedule);
 
             LOGGER.debug("Added schedule for route Donosti-Oviedo");
         } catch (ParseException e) {

@@ -1,11 +1,9 @@
 package com.davidmogar.alsa.web.controllers;
 
-import com.davidmogar.alsa.domain.route.Route;
-import com.davidmogar.alsa.services.auth.UserService;
-import com.davidmogar.alsa.services.change.DatabaseChangeService;
-import com.davidmogar.alsa.services.route.PlaceService;
-import com.davidmogar.alsa.services.route.RouteService;
-import com.davidmogar.alsa.services.schedule.ScheduleService;
+import com.davidmogar.alsa.services.change.DatabaseChangeManagerService;
+import com.davidmogar.alsa.services.route.PlaceManagerService;
+import com.davidmogar.alsa.services.route.RouteManagerService;
+import com.davidmogar.alsa.services.schedule.ScheduleManagerService;
 import com.davidmogar.alsa.web.listeners.ActiveSessionsListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.session.SessionRegistry;
@@ -19,31 +17,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AdminController {
 
     @Autowired
-    private DatabaseChangeService databaseChangeService;
+    private DatabaseChangeManagerService databaseChangeManagerService;
 
     @Autowired
-    private PlaceService placeService;
+    private PlaceManagerService placeManagerService;
 
     @Autowired
-    private RouteService routeService;
+    private RouteManagerService routeManagerService;
 
     @Autowired
-    private ScheduleService scheduleService;
+    private ScheduleManagerService scheduleManagerService;
 
     @Autowired
     private SessionRegistry sessionRegistry;
-
-    @Autowired
-    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String showHome(Model model) {
         model.addAttribute("sessions", ActiveSessionsListener.getActiveSessions());
         model.addAttribute("activeUsers", sessionRegistry.getAllPrincipals().size());
-        model.addAttribute("places", placeService.count());
-        model.addAttribute("routes", routeService.count());
-        model.addAttribute("schedules", scheduleService.count());
-        model.addAttribute("changes", databaseChangeService.findRecentChanges());
+        model.addAttribute("places", placeManagerService.count());
+        model.addAttribute("routes", routeManagerService.count());
+        model.addAttribute("schedules", scheduleManagerService.count());
+        model.addAttribute("changes", databaseChangeManagerService.findRecentChanges());
 
         return "admin.home";
     }

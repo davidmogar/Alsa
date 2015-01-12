@@ -12,6 +12,7 @@
                 <p><i18n:message code="site.thanks.code"/></p>
                 <p>${reservation.code}</p>
                 <a href="javascript:window.print()" class="btn btn-default btn-lg"><i18n:message code="site.thanks.print"/></a>
+                <button id="sendEmail" class="btn btn-primary btn-lg"><i18n:message code="site.thanks.send"/></button>
             </div>
         </div>
     </div>
@@ -98,6 +99,38 @@
                         </c:if>
                     </dl>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="emailModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i18n:message code="site.thanks.modal.title"/></h4>
+            </div>
+            <div class="modal-body">
+                <spring:form commandName="email" action="sendEmail">
+                    <div class="form-group">
+                        <spring:label
+                                path="emailAddress"><i18n:message code="site.thanks.modal.emailAddress"/></spring:label>
+                        <i18n:message code="site.thanks.modal.emailAddress.ph" var="emailAddressPlaceholder"/>
+                        <spring:input path="emailAddress" class="form-control" Type="text" placeholder="${emailAddressPlaceholder}"
+                                      required="true"/>
+                        <spring:errors path="emailAddress" cssClass="validation-error"/>
+                    </div>
+
+                    <div class="form-group">
+                        <spring:label path="text"><i18n:message code="site.thanks.modal.text"/></spring:label>
+                        <textarea path="text" name="text" id="text" class="form-control" rows="5"
+                                         required="true"><i18n:message code="site.thanks.email" arguments="${reservation.code}"/></textarea>
+                        <spring:errors path="text" cssClass="validation-error"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"><i18n:message code="site.thanks.modal.send"/></button>
+                </spring:form>
             </div>
         </div>
     </div>

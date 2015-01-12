@@ -2,15 +2,36 @@ package com.davidmogar.alsa.dto.route;
 
 import com.davidmogar.alsa.domain.route.Place;
 import com.davidmogar.alsa.domain.route.Route;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class RouteDto {
 
     private Long id;
+
+    @NotNull
     private Long distance;
+
+    @NotEmpty
+    @Size(min = 2, max = 100)
     private String name;
+
+    @NotEmpty
+    @Size(min = 10, max = 254)
     private String description;
+
     private PlaceDto origin;
     private PlaceDto destination;
+
+    /* Variables used to create objects from form */
+
+    @NotEmpty
+    private String originName;
+
+    @NotEmpty
+    private String destinationName;
 
     public RouteDto() {
     }
@@ -78,6 +99,22 @@ public class RouteDto {
 
     public void setDestination(PlaceDto destination) {
         this.destination = destination;
+    }
+
+    public String getOriginName() {
+        return originName;
+    }
+
+    public void setOriginName(String originName) {
+        this.originName = originName;
+    }
+
+    public String getDestinationName() {
+        return destinationName;
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
     }
 
 }

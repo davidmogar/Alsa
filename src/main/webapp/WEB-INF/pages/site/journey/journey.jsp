@@ -68,3 +68,21 @@
         </spring:form>
     </div>
 </div>
+
+<div id="popular" class="container">
+    <h3>Popular destinations</h3>
+
+    <div class="row">
+        <c:forEach items="${popularPlaces}" var="place" varStatus="status">
+            <div class="col-sm-4 col-md-4">
+                <div class="thumbnail">
+                    <img src="<c:url value='${place.imagePath}' />">
+                    <div class="caption">
+                        <h4>${place.name}</h4>
+                        <p>${place.description}</p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
