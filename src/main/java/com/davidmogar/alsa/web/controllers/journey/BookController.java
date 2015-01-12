@@ -18,8 +18,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;

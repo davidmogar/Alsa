@@ -2,11 +2,8 @@ package com.davidmogar.alsa.dto.schedule.mapper;
 
 
 import com.davidmogar.alsa.domain.bus.Bus;
-import com.davidmogar.alsa.domain.route.Place;
 import com.davidmogar.alsa.domain.route.Route;
 import com.davidmogar.alsa.domain.schedule.Schedule;
-import com.davidmogar.alsa.dto.bus.mapper.BusMapper;
-import com.davidmogar.alsa.dto.route.mapper.RouteMapper;
 import com.davidmogar.alsa.dto.schedule.ScheduleDto;
 
 public class ScheduleMapper {
